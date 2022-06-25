@@ -1,6 +1,6 @@
-import welcomeScreenData from '../../welcomeScreen';
+import welcomeScreenData from '../welcomeData';
 import { View, FlatList, Text } from 'react-native';
-import { IHomeScreenData } from '../../types';
+import { IHomeScreenData } from '../types';
 import WelcomeListItem from './WelcomeListItem';
 
 export default function WelcomePage() {
@@ -9,13 +9,15 @@ export default function WelcomePage() {
 	const keyExtractorFunc = (item: IHomeScreenData): string => item.id.toString();
 
 	return (
-		<View>
+		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 			<FlatList
 				data={welcomeScreenData}
 				renderItem={renderItemFunc}
 				keyExtractor={keyExtractorFunc}
-				// horizontal
+				horizontal
 				pagingEnabled
+				bounces={false}
+				showsHorizontalScrollIndicator={false}
 			/>
 		</View>
 	);

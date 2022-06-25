@@ -1,63 +1,54 @@
-import { IHomeScreenData } from '../../types';
-import { View, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native';
-// @ts-ignore
-import Friends from '../../assets/WelcomePage/save.svg';
+import { IHomeScreenData } from '../types';
+import { View, Text, StyleSheet, useWindowDimensions, Image, ScaledSize } from 'react-native';
 
 export default function WelcomeListItem({ data }: { data: IHomeScreenData }) {
+	const { height, width }: ScaledSize = useWindowDimensions();
 	return (
-		<View style={styles.itemContainer}>
-			<View style={{ flex: 0.2 }}>
-				<Text style={styles.title}>{data.title}</Text>
+		<View style={[styles.welcomeItemContainer, { width: width, height: height / 1.2 }]}>
+			<View style={styles.titleContainer}>
+				<Text style={styles.titleText}>{data.title}</Text>
 			</View>
 
-			<View style={{ flex: 0.6 }}>
-				<Friends />
+			<View style={{ flex: 2 }}>
+				<Image source={data.image} style={{ width: width - width / 7, flex: 1 }} />
 			</View>
 
-			<View style={{ flex: 0.2 }}>
-				<Text style={styles.description}>{data.description}</Text>
+			<View style={styles.descriptionContainer}>
+				<Text style={styles.decriptionText}>{data.description}</Text>
 			</View>
 		</View>
 	);
 }
 
-interface IStyles {
-	imageContainer: ViewStyle;
-	itemContainer: ViewStyle;
-	title: TextStyle;
-	description: TextStyle;
-}
-
-const styles = StyleSheet.create<IStyles>({
-	itemContainer: {
-		// padding: 60,
+const styles = StyleSheet.create({
+	welcomeItemContainer: {
 		flex: 1,
-		// width: '100%',
-		// height: '100%',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
 
-	imageContainer: {
-		flex: 0.6,
-		// borderWidth: 3,
-		// borderStyle: 'solid',
-		// borderColor: 'blue',
+	titleContainer: {
+		flex: 1,
+		justifyContent: 'center',
 	},
 
-	title: {
-		flex: 0.2,
-		// paddingBottom: 30,
+	descriptionContainer: {
+		flex: 1,
+		justifyContent: 'center',
+		width: '80%',
+	},
+
+	titleText: {
+		paddingTop: 30,
+		fontSize: 26,
 		fontWeight: 'bold',
-		fontSize: 30,
+		textTransform: 'uppercase',
+		textAlign: 'center',
 	},
 
-	description: {
-		flex: 0.2,
-		// paddingTop: 20,
-		textAlign: 'center',
+	decriptionText: {
 		fontSize: 15,
-		fontWeight: '400',
-		color: 'darkgrey',
+		textAlign: 'center',
+		color: 'lightgrey',
 	},
 });
