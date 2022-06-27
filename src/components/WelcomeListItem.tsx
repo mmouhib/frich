@@ -1,7 +1,12 @@
 import { IHomeScreenData } from '../types';
 import { View, Text, StyleSheet, useWindowDimensions, Image, ScaledSize } from 'react-native';
 
-export default function WelcomeListItem({ data }: { data: IHomeScreenData }) {
+interface IWelcomeListItem {
+	data: IHomeScreenData;
+	currentPageIndex: number;
+}
+
+export default function WelcomeListItem({ data, currentPageIndex }: IWelcomeListItem) {
 	const { height, width }: ScaledSize = useWindowDimensions();
 	return (
 		<View style={[styles.welcomeItemContainer, { width: width, height: height / 1.2 }]}>
@@ -39,16 +44,17 @@ const styles = StyleSheet.create({
 	},
 
 	titleText: {
+		color: '#3982c5',
 		paddingTop: 30,
-		fontSize: 26,
-		fontWeight: 'bold',
+		fontSize: 23,
+		fontWeight: '800',
 		textTransform: 'uppercase',
 		textAlign: 'center',
 	},
 
 	decriptionText: {
-		fontSize: 15,
+		fontSize: 16,
 		textAlign: 'center',
-		color: 'lightgrey',
+		color: '#9b9b9b',
 	},
 });

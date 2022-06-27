@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Dimensions, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import WelcomePage from './src/components/WelcomePage';
 import { ScaledSize } from 'react-native';
 
