@@ -10,7 +10,10 @@ export default function DotsSlider({ selectedIndex }: { selectedIndex: number })
 					<View
 						style={[
 							styles.dot,
-							{ backgroundColor: selectedIndex == index ? '#509ce4' : '#aaa' },
+							{
+								backgroundColor: selectedIndex == index ? '#509ce4' : '#aaa',
+								width: selectedIndex == index ? 17 : 12,
+							},
 						]}
 						key={index}></View>
 				);
