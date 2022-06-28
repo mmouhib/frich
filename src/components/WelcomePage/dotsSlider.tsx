@@ -1,21 +1,21 @@
 import { View, StyleSheet } from 'react-native';
-import welcomeScreenData from '../welcomeData';
+import welcomeScreenData from '../../welcomeData';
 
 export default function DotsSlider({ selectedIndex }: { selectedIndex: number }) {
 	return (
 		<View style={styles.container}>
 			{welcomeScreenData.map((_, index) => {
-				//the list is static so using the index as a key is harmless.
 				return (
 					<View
+						key={index} // index as a key because the list is static
 						style={[
 							styles.dot,
-							{
-								backgroundColor: selectedIndex == index ? '#509ce4' : '#aaa',
-								width: selectedIndex == index ? 17 : 12,
+							selectedIndex == index && {
+								backgroundColor: '#509ce4',
+								width: 17,
 							},
 						]}
-						key={index}></View>
+					></View>
 				);
 			})}
 		</View>
@@ -26,13 +26,13 @@ const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'row',
 		justifyContent: 'center',
-		alignItems: 'center',
 	},
 
 	dot: {
-		height: 12,
+		height: 5,
 		width: 12,
 		borderRadius: 12 / 2,
 		marginHorizontal: 4,
+		backgroundColor: '#aaa',
 	},
 });

@@ -1,4 +1,4 @@
-import { IHomeScreenData } from '../types';
+import { IHomeScreenData } from '../../types';
 import { View, Text, StyleSheet, useWindowDimensions, Image, ScaledSize } from 'react-native';
 
 interface IWelcomeListItem {
@@ -15,7 +15,11 @@ export default function WelcomeListItem({ data, currentPageIndex }: IWelcomeList
 			</View>
 
 			<View style={{ flex: 2 }}>
-				<Image source={data.image} style={{ width: width - width / 7, flex: 1 }} />
+				<Image
+					source={data.image}
+					style={{ width: width - width / 7, flex: 1 }}
+					resizeMode="contain"
+				/>
 			</View>
 
 			<View style={styles.descriptionContainer}>
@@ -35,6 +39,7 @@ const styles = StyleSheet.create({
 	titleContainer: {
 		flex: 1,
 		justifyContent: 'center',
+		width: '90%',
 	},
 
 	descriptionContainer: {
@@ -47,7 +52,7 @@ const styles = StyleSheet.create({
 		color: '#3982c5',
 		paddingTop: 30,
 		fontSize: 23,
-		fontWeight: '800',
+		fontWeight: '900',
 		textTransform: 'uppercase',
 		textAlign: 'center',
 	},
