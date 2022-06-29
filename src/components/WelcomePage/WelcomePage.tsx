@@ -1,9 +1,10 @@
-import welcomeScreenData from '../../welcomeData';
+import welcomeScreenData from '../../constants/welcomeData';
 import { View, FlatList } from 'react-native';
-import { IHomeScreenData } from '../../types';
+import { IHomeScreenData } from '../../types/types';
 import WelcomeListItem from './WelcomeListItem';
 import { useState, useRef } from 'react';
-import WelcomeSlidesFooter from './WelcomeSlidesFooter';
+import DotsSlider from './dotsSlider';
+import SlidesNavigator from './SlidesNavigator';
 
 export default function WelcomePage() {
 	const [currentPageIndex, setCurrentPageIndex] = useState<number>(0);
@@ -24,10 +25,17 @@ export default function WelcomePage() {
 	}).current;
 	 */
 
+	const flatListRef = useRef<FlatList>(null);
+
+	const _scrollToIndex = (index: number) => {
+		if (flatListRef.current) flatListRef.current.scrollToIndex({ index: index });
+	};
+
 	return (
 		<View>
 			<View style={{ flex: 5 }}>
 				<FlatList
+					ref={flatListRef}
 					data={welcomeScreenData}
 					renderItem={_renderItem}
 					keyExtractor={_keyExtractor}
@@ -38,8 +46,9 @@ export default function WelcomePage() {
 					onViewableItemsChanged={_onViewableItemsChanged}
 				/>
 			</View>
-			<View style={{ flex: 1 }}>
-				<WelcomeSlidesFooter currentPageIndex={currentPageIndex} />
+			<View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' }}>
+				<DotsSlider selectedIndex={currentPageIndex} />
+				<SlidesNavigator currentPageIndex={currentPageIndex} scrollToIndex={_scrollToIndex} />
 			</View>
 		</View>
 	);

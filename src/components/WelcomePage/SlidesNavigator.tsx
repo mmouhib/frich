@@ -1,32 +1,59 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import WelcomeData from '../../constants/welcomeData';
 
 interface ISlidesNavigator {
 	currentPageIndex: number;
+	scrollToIndex: (arg: number) => void;
 }
 
-export default function SlidesNavigator({ currentPageIndex }: ISlidesNavigator) {
-	const borderWith = 3;
+/**
+ * the following fn calculates the needed border width
+ * for the arrow navigator to match the current page
+ */
+function borderStyleShorthand(pageIndex: number, borderWidth: number): object {
+	switch (pageIndex) {
+		case 1:
+			return {
+				borderTopWidth: borderWidth,
+				borderRightWidth: borderWidth,
+			};
+		case 2:
+			return {
+				borderTopWidth: borderWidth,
+				borderRightWidth: borderWidth,
+				borderBottomWidth: borderWidth,
+			};
+		case 3:
+			return { borderWidth: borderWidth };
+		default:
+			return {};
+	}
+}
+
+export default function SlidesNavigator({ currentPageIndex, scrollToIndex }: ISlidesNavigator) {
+	const BORDER_WIDTH = 3;
+
+	const WELCOME_DATA_LENGTH: number = WelcomeData.length;
 
 	/*
-	 todo: todo: make a function that calculates the percentage of the index
+	 todo: make a function that calculates the percentage of the index
 	  from the length of the welcomeData list instead of hard coding them (in lines 20 -> 26)
 	 */
 
+	const _onPress = () => {
+		currentPageIndex < WELCOME_DATA_LENGTH - 1 && scrollToIndex(currentPageIndex + 1);
+	};
+
 	return (
-		<View
-			style={[
-				styles.container,
-				currentPageIndex == 1 && { borderTopWidth: borderWith, borderRightWidth: borderWith },
-				currentPageIndex == 2 && {
-					borderTopWidth: borderWith,
-					borderRightWidth: borderWith,
-					borderBottomWidth: borderWith,
-				},
-				currentPageIndex == 3 && { borderWidth: borderWith },
-			]}
-		>
-			<Feather name="arrow-right" size={24} color="#509ce4" />
+		<View style={[styles.container, borderStyleShorthand(currentPageIndex, BORDER_WIDTH)]}>
+			<Feather
+				onPress={_onPress}
+				borderRadius={50}
+				name="arrow-right"
+				size={24}
+				color="#509ce4"
+			/>
 		</View>
 	);
 }

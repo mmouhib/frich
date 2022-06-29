@@ -1,4 +1,4 @@
-import { IHomeScreenData } from '../../types';
+import { IHomeScreenData } from '../../types/types';
 import { View, Text, StyleSheet, useWindowDimensions, Image, ScaledSize } from 'react-native';
 
 interface IWelcomeListItem {

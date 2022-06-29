@@ -1,5 +1,5 @@
 import { View, StyleSheet } from 'react-native';
-import welcomeScreenData from '../../welcomeData';
+import welcomeScreenData from '../../constants/welcomeData';
 
 export default function DotsSlider({ selectedIndex }: { selectedIndex: number }) {
 	return (
