@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
 
 	SelectedButton: {
 		backgroundColor: colors.mainColor,
-		borderWidth: 3,
+		borderWidth: 0,
 		borderColor: colors.mainColor,
 		width: '40%',
-		padding: 10,
+		padding: 11,
 		alignItems: 'center',
 		borderRadius: 7,
 		marginRight: 5,
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
 	},
 
 	button: {
-		backgroundColor: 'transparent',
-		borderWidth: 3,
+		backgroundColor: '#f1eff9',
+		// borderWidth: 1,
 		borderColor: colors.mainColor,
 		width: '40%',
 		padding: 10,

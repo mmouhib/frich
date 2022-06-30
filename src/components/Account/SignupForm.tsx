@@ -3,13 +3,15 @@ import { View, TextInput, StyleSheet } from 'react-native';
 import CustomInput from './CustomInput';
 
 export default function SignupForm() {
-	const [text, setText] = useState<string>('');
+	const [userName, setUserName] = useState<string>('');
+	const [email, setEmail] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
 
 	return (
 		<View>
-			<CustomInput value={text} setValue={setText} placeholder={'name'} />
-			<CustomInput value={text} setValue={setText} placeholder={'email'} />
-			<CustomInput value={text} setValue={setText} placeholder={'password'} />
+			<CustomInput value={userName} setValue={setUserName} placeholder={'name'} />
+			<CustomInput value={email} setValue={setEmail} placeholder={'email'} />
+			<CustomInput value={password} setValue={setPassword} placeholder={'password'} />
 		</View>
 	);
 }

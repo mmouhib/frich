@@ -1,4 +1,6 @@
 import { StyleSheet, TextInput } from 'react-native';
+import { useState } from 'react';
+import colors from '../../utils/colors';
 
 interface ICustomInput {
 	type?: any;
@@ -8,13 +10,19 @@ interface ICustomInput {
 }
 
 export default function CustomInput({ value, setValue, placeholder }: ICustomInput) {
+	const [isFocused, setIsFocused] = useState<boolean>(false);
+
 	//todo: add background color on focus
 
 	return (
 		<TextInput
-			style={styles.input}
+			onBlur={() => {
+				setIsFocused(true);
+			}}
+			style={[styles.input, { borderWidth: isFocused ? 1 : 0 }]}
 			value={value}
 			placeholder={placeholder}
+			placeholderTextColor="lightgrey"
 			onChangeText={(newTextValue) => {
 				setValue(newTextValue);
 			}}
@@ -24,12 +32,16 @@ export default function CustomInput({ value, setValue, placeholder }: ICustomInp
 
 const styles = StyleSheet.create({
 	input: {
+		alignSelf: 'center',
 		height: 40,
+		width: '83%',
 		margin: 12,
 		padding: 10,
-		borderWidth: 1,
 		borderRadius: 7,
-		borderColor: '#b6b6b6',
+		borderColor: colors.mainColor,
+		backgroundColor: '#f1eff9',
 		// backgroundColor: '#c4d3da',
 	},
+
+	inputPlaceholderStyle: {},
 });

@@ -20,7 +20,10 @@ export default function Account() {
 				/>
 			</View>
 
-			<View style={{ flex: 4 }}>{isLoginSelected ? <LoginForm /> : <SignupForm />}</View>
+			<View style={{ flex: 4 }}>
+				<Text style={styles.accountInformationText}>Account Informations</Text>
+				{isLoginSelected ? <LoginForm /> : <SignupForm />}
+			</View>
 
 			<View style={{ flex: 1 }}>
 				<AccountFooter
@@ -37,5 +40,12 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		fontSize: 30,
 		marginLeft: 20,
+	},
+
+	accountInformationText: {
+		marginLeft: 20,
+		marginBottom: 10,
+		color: '#aaa',
+		textTransform: 'uppercase',
 	},
 });
