@@ -1,5 +1,5 @@
 const colors: any = {
-	mainColor: '#509ce4',
+	mainColor: '#4977a6',
 };
 
 export default colors;

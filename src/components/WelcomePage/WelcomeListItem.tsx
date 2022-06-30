@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
 
 	titleText: {
 		color: '#3982c5',
-		paddingTop: 30,
 		fontSize: 30,
 		fontWeight: '600',
 		textAlign: 'center',

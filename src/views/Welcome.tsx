@@ -31,7 +31,7 @@ export default function Welcome() {
 
 	return (
 		<View>
-			<View style={{ flex: 5 }}>
+			<View style={{ flex: 6 }}>
 				<FlatList
 					ref={flatListRef}
 					data={welcomeScreenData}
