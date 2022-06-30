@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
-import WelcomePage from './src/components/WelcomePage/WelcomePage';
+import Welcome from './src/views/Welcome';
 import { ScaledSize } from 'react-native';
 
 export default function App() {
@@ -8,7 +8,7 @@ export default function App() {
 
 	return (
 		<View style={[styles.container, { width: width, height: height }]}>
-			<WelcomePage />
+			<Welcome />
 			<StatusBar style="auto" />
 		</View>
 	);

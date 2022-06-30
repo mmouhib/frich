@@ -1,17 +1,15 @@
-import welcomeScreenData from '../../constants/welcomeData';
+import welcomeScreenData from '../constants/welcomeData';
 import { View, FlatList } from 'react-native';
-import { IHomeScreenData } from '../../types/types';
-import WelcomeListItem from './WelcomeListItem';
+import { IHomeScreenData } from '../types/types';
+import WelcomeListItem from '../components/WelcomePage/WelcomeListItem';
 import { useState, useRef } from 'react';
-import DotsSlider from './dotsSlider';
-import SlidesNavigator from './SlidesNavigator';
+import DotsSlider from '../components/WelcomePage/DotsSlider';
+import SlidesNavigator from '../components/WelcomePage/SlidesNavigator';
 
-export default function WelcomePage() {
+export default function Welcome() {
 	const [currentPageIndex, setCurrentPageIndex] = useState<number>(0);
 
-	const _renderItem = ({ item }: { item: IHomeScreenData }) => (
-		<WelcomeListItem data={item} currentPageIndex={currentPageIndex} />
-	);
+	const _renderItem = ({ item }: { item: IHomeScreenData }) => <WelcomeListItem data={item} />;
 
 	const _keyExtractor = (item: IHomeScreenData): string => item.id.toString();
 
@@ -44,6 +42,7 @@ export default function WelcomePage() {
 					showsHorizontalScrollIndicator={false}
 					viewabilityConfig={{ itemVisiblePercentThreshold: 40 }}
 					onViewableItemsChanged={_onViewableItemsChanged}
+					// ListFooterComponent={}
 				/>
 			</View>
 			<View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' }}>

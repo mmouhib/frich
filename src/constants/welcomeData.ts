@@ -10,14 +10,14 @@ const welcomeScreenData: IHomeScreenData[] = [
 
 	{
 		id: 2,
-		title: 'Revisit your matches',
+		title: 'Revisit matches',
 		description: 'Come back any time to see your previous match logs whenever you want',
 		image: require('../../assets/WelcomePage/revisit.png'),
 	},
 
 	{
 		id: 3,
-		title: 'Register friends in matches',
+		title: 'Register friends',
 		description:
 			"In each match, you have the ability to register your friends that you've played with",
 		image: require('../../assets/WelcomePage/friends.png'),

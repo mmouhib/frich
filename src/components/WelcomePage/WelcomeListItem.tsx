@@ -3,14 +3,13 @@ import { View, Text, StyleSheet, useWindowDimensions, Image, ScaledSize } from '
 
 interface IWelcomeListItem {
 	data: IHomeScreenData;
-	currentPageIndex: number;
 }
 
-export default function WelcomeListItem({ data, currentPageIndex }: IWelcomeListItem) {
+export default function WelcomeListItem({ data }: IWelcomeListItem) {
 	const { height, width }: ScaledSize = useWindowDimensions();
 	return (
 		<View style={[styles.welcomeItemContainer, { width: width, height: height / 1.2 }]}>
-			<View style={styles.titleContainer}>
+			<View style={styles.textContainer}>
 				<Text style={styles.titleText}>{data.title}</Text>
 			</View>
 
@@ -22,8 +21,8 @@ export default function WelcomeListItem({ data, currentPageIndex }: IWelcomeList
 				/>
 			</View>
 
-			<View style={styles.descriptionContainer}>
-				<Text style={styles.decriptionText}>{data.description}</Text>
+			<View style={styles.textContainer}>
+				<Text style={styles.descriptionText}>{data.description}</Text>
 			</View>
 		</View>
 	);
@@ -36,30 +35,23 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 
-	titleContainer: {
+	textContainer: {
 		flex: 1,
 		justifyContent: 'center',
-		width: '90%',
-	},
-
-	descriptionContainer: {
-		flex: 1,
-		justifyContent: 'center',
-		width: '80%',
+		width: '75%',
 	},
 
 	titleText: {
 		color: '#3982c5',
 		paddingTop: 30,
-		fontSize: 23,
-		fontWeight: '900',
-		textTransform: 'uppercase',
+		fontSize: 30,
+		fontWeight: '600',
 		textAlign: 'center',
 	},
 
-	decriptionText: {
-		fontSize: 16,
+	descriptionText: {
+		fontSize: 17,
 		textAlign: 'center',
-		color: '#9b9b9b',
+		color: '#8a8888',
 	},
 });
