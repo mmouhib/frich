@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import CustomInput from './CustomInput';
+import ProceedButton from './ProceedButton';
 
 export default function SignupForm() {
 	const [userName, setUserName] = useState<string>('');
@@ -8,10 +9,11 @@ export default function SignupForm() {
 	const [password, setPassword] = useState<string>('');
 
 	return (
-		<View>
-			<CustomInput value={userName} setValue={setUserName} placeholder={'name'} />
+		<View style={{ width: '100%' }}>
+			<CustomInput value={userName} setValue={setUserName} placeholder={'username'} />
 			<CustomInput value={email} setValue={setEmail} placeholder={'email'} />
 			<CustomInput value={password} setValue={setPassword} placeholder={'password'} />
+			<ProceedButton text="Sign Up" />
 		</View>
 	);
 }

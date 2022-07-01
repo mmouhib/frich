@@ -13,7 +13,7 @@ export default function AccountFooter({ isLoginSelected, setIsLoginSelected }: I
 				onPress={() => {
 					!isLoginSelected && setIsLoginSelected(true);
 				}}
-				android_ripple={{ color: 'rgba(155,213,236,0.04)' }}
+				android_ripple={{ color: colors.rippleColor }}
 				style={isLoginSelected ? styles.SelectedButton : styles.button}
 			>
 				<Text style={isLoginSelected ? styles.SelectedButtonText : styles.buttonText}>
@@ -24,11 +24,11 @@ export default function AccountFooter({ isLoginSelected, setIsLoginSelected }: I
 				onPress={() => {
 					isLoginSelected && setIsLoginSelected(false);
 				}}
-				android_ripple={{ color: 'rgba(155,213,236,0.04)' }}
+				android_ripple={{ color: colors.rippleColor }}
 				style={isLoginSelected ? styles.button : styles.SelectedButton}
 			>
 				<Text style={isLoginSelected ? styles.buttonText : styles.SelectedButtonText}>
-					Sign Up
+					Register
 				</Text>
 			</Pressable>
 		</View>

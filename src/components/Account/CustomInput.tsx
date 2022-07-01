@@ -12,14 +12,15 @@ interface ICustomInput {
 export default function CustomInput({ value, setValue, placeholder }: ICustomInput) {
 	const [isFocused, setIsFocused] = useState<boolean>(false);
 
-	//todo: add background color on focus
-
 	return (
 		<TextInput
 			onBlur={() => {
+				setIsFocused(false);
+			}}
+			onFocus={() => {
 				setIsFocused(true);
 			}}
-			style={[styles.input, { borderWidth: isFocused ? 1 : 0 }]}
+			style={[styles.input, { borderWidth: isFocused ? 2 : 0 }]}
 			value={value}
 			placeholder={placeholder}
 			placeholderTextColor="lightgrey"
@@ -34,7 +35,8 @@ const styles = StyleSheet.create({
 	input: {
 		alignSelf: 'center',
 		height: 40,
-		width: '83%',
+		width: '100%',
+		// width: '83%',
 		margin: 12,
 		padding: 10,
 		borderRadius: 7,

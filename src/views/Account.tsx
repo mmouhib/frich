@@ -11,21 +11,21 @@ export default function Account() {
 
 	return (
 		<View style={{ paddingTop: 30, width: width, height: height }}>
-			<View style={{ flex: 3 }}>
+			<View style={{ flex: 1 }}>
 				<Text style={styles.accountTitleText}>Let's get started</Text>
 				<Image
-					style={{ width: '100%', height: '80%' }}
-					source={require('../../assets/Account/account.png')}
+					style={{ width: '100%', height: '100%' }}
+					source={require('../../assets/Account/login.jpg')}
 					resizeMode="contain"
 				/>
 			</View>
 
-			<View style={{ flex: 4 }}>
+			<View style={[{ flex: 1 }, styles.formSection]}>
 				<Text style={styles.accountInformationText}>Account Informations</Text>
 				{isLoginSelected ? <LoginForm /> : <SignupForm />}
 			</View>
 
-			<View style={{ flex: 1 }}>
+			<View style={{ flex: 0.3 }}>
 				<AccountFooter
 					isLoginSelected={isLoginSelected}
 					setIsLoginSelected={setIsLoginSelected}
@@ -43,9 +43,16 @@ const styles = StyleSheet.create({
 	},
 
 	accountInformationText: {
-		marginLeft: 20,
-		marginBottom: 10,
+		marginBottom: 8,
 		color: '#aaa',
 		textTransform: 'uppercase',
+		alignSelf: 'flex-start',
+	},
+
+	formSection: {
+		marginTop: 20,
+		width: '80%',
+		alignItems: 'center',
+		alignSelf: 'center',
 	},
 });
