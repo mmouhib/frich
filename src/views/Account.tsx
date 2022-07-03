@@ -10,7 +10,7 @@ export default function Account() {
 	const [isLoginSelected, setIsLoginSelected] = useState<boolean>(true);
 
 	return (
-		<View style={{ paddingTop: 30, width: width, height: height }}>
+		<View style={{ paddingTop: 60, width: width, height: height }}>
 			<View style={{ flex: 1 }}>
 				<Text style={styles.accountTitleText}>Let's get started</Text>
 				<Image

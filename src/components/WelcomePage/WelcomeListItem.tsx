@@ -13,7 +13,7 @@ export default function WelcomeListItem({ data }: IWelcomeListItem) {
 				<Text style={styles.titleText}>{data.title}</Text>
 			</View>
 
-			<View style={{ flex: 2 }}>
+			<View style={{ flex: 1 }}>
 				<Image
 					source={data.image}
 					style={{ width: width - width / 7, flex: 1 }}

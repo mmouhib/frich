@@ -1,10 +1,11 @@
-import { View, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import WelcomeData from '../../constants/welcomeData';
 
 interface ISlidesNavigator {
 	currentPageIndex: number;
 	scrollToIndex: (arg: number) => void;
+	setCurrentPageIndex: (arg: number) => void;
 }
 
 /**
@@ -31,7 +32,11 @@ function borderStyleShorthand(pageIndex: number, borderWidth: number): object {
 	}
 }
 
-export default function SlidesNavigator({ currentPageIndex, scrollToIndex }: ISlidesNavigator) {
+export default function SlidesNavigator({
+	currentPageIndex,
+	scrollToIndex,
+	setCurrentPageIndex,
+}: ISlidesNavigator) {
 	const BORDER_WIDTH = 3;
 
 	const WELCOME_DATA_LENGTH: number = WelcomeData.length;
@@ -42,24 +47,33 @@ export default function SlidesNavigator({ currentPageIndex, scrollToIndex }: ISl
 	 */
 
 	const _onPress = () => {
+		currentPageIndex == WELCOME_DATA_LENGTH - 1 && setCurrentPageIndex(WELCOME_DATA_LENGTH);
 		currentPageIndex < WELCOME_DATA_LENGTH - 1 && scrollToIndex(currentPageIndex + 1);
 	};
 
 	return (
-		<View style={[styles.container, borderStyleShorthand(currentPageIndex, BORDER_WIDTH)]}>
-			<Feather
-				onPress={_onPress}
-				borderRadius={50}
-				name="arrow-right"
-				size={24}
-				color="#509ce4"
-			/>
+		<View style={styles.container}>
+			<View style={[styles.iconContainer, borderStyleShorthand(currentPageIndex, BORDER_WIDTH)]}>
+				<Feather
+					onPress={_onPress}
+					borderRadius={50}
+					name="arrow-right"
+					size={24}
+					color="#509ce4"
+				/>
+			</View>
+			<Text>Skip</Text>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	iconContainer: {
+		marginBottom: 13,
 		width: 50,
 		marginTop: 35,
 		padding: 10,

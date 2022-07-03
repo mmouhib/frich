@@ -7,9 +7,10 @@ interface ICustomInput {
 	value: string;
 	setValue: (arg: string) => void;
 	placeholder: string;
+	styleOverride?: object;
 }
 
-export default function CustomInput({ value, setValue, placeholder }: ICustomInput) {
+export default function CustomInput({ value, setValue, placeholder, styleOverride }: ICustomInput) {
 	const [isFocused, setIsFocused] = useState<boolean>(false);
 
 	return (
@@ -20,7 +21,7 @@ export default function CustomInput({ value, setValue, placeholder }: ICustomInp
 			onFocus={() => {
 				setIsFocused(true);
 			}}
-			style={[styles.input, { borderWidth: isFocused ? 2 : 0 }]}
+			style={[styles.input, { borderWidth: isFocused ? 2 : 0 }, styleOverride ?? null]}
 			value={value}
 			placeholder={placeholder}
 			placeholderTextColor="lightgrey"
@@ -36,13 +37,11 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		height: 40,
 		width: '100%',
-		// width: '83%',
 		margin: 12,
 		padding: 10,
 		borderRadius: 7,
 		borderColor: colors.mainColor,
 		backgroundColor: '#f1eff9',
-		// backgroundColor: '#c4d3da',
 	},
 
 	inputPlaceholderStyle: {},
