@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import WelcomeData from '../../constants/welcomeData';
 
@@ -52,18 +52,11 @@ export default function SlidesNavigator({
 	};
 
 	return (
-		<View style={styles.container}>
+		<Pressable style={styles.container} onPress={_onPress}>
 			<View style={[styles.iconContainer, borderStyleShorthand(currentPageIndex, BORDER_WIDTH)]}>
-				<Feather
-					onPress={_onPress}
-					borderRadius={50}
-					name="arrow-right"
-					size={24}
-					color="#509ce4"
-				/>
+				<Feather borderRadius={50} name="arrow-right" size={24} color="#509ce4" />
 			</View>
-			<Text>Skip</Text>
-		</View>
+		</Pressable>
 	);
 }
 
@@ -75,9 +68,8 @@ const styles = StyleSheet.create({
 	iconContainer: {
 		marginBottom: 13,
 		width: 50,
-		marginTop: 35,
+		marginTop: 25,
 		padding: 10,
-		borderStyle: 'solid',
 		borderRadius: 25,
 		borderColor: '#509ce4',
 	},

@@ -7,12 +7,12 @@ export default function DotsSlider({ selectedIndex }: { selectedIndex: number })
 			{welcomeScreenData.map((_, index) => {
 				return (
 					<View
-						key={index} // index as a key because the list is static
+						key={index}
 						style={[
 							styles.dot,
 							selectedIndex == index && {
 								backgroundColor: '#509ce4',
-								width: 17,
+								width: 30,
 							},
 						]}
 					></View>
@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
 	},
 
 	dot: {
-		height: 5,
-		width: 12,
-		borderRadius: 12 / 2,
+		height: 6,
+		width: 17,
+		borderRadius: 6 / 2,
 		marginHorizontal: 4,
 		backgroundColor: '#aaa',
 	},

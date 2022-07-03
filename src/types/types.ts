@@ -8,3 +8,8 @@ export interface IHomeScreenData {
 	description: string;
 	image: ImageSourcePropType;
 }
+
+export interface IUseDimensions {
+	exactWidth: number;
+	exactHeight: number;
+}

@@ -1,22 +1,25 @@
 import { IHomeScreenData } from '../../types/types';
 import { View, Text, StyleSheet, useWindowDimensions, Image, ScaledSize } from 'react-native';
+import useDimentions from '../../hooks/useDimensions';
 
-interface IWelcomeListItem {
-	data: IHomeScreenData;
-}
+export default function WelcomeListItem({ data }: { data: IHomeScreenData }) {
+	const { exactWidth } = useDimentions();
 
-export default function WelcomeListItem({ data }: IWelcomeListItem) {
-	const { height, width }: ScaledSize = useWindowDimensions();
 	return (
-		<View style={[styles.welcomeItemContainer, { width: width, height: height / 1.2 }]}>
+		<View style={[styles.container, { width: exactWidth }]}>
 			<View style={styles.textContainer}>
 				<Text style={styles.titleText}>{data.title}</Text>
 			</View>
 
-			<View style={{ flex: 1 }}>
+			<View
+				style={{
+					width: '90%',
+					height: '50%',
+				}}
+			>
 				<Image
 					source={data.image}
-					style={{ width: width - width / 7, flex: 1 }}
+					style={{ width: '100%', height: '100%' }}
 					resizeMode="contain"
 				/>
 			</View>
@@ -29,16 +32,17 @@ export default function WelcomeListItem({ data }: IWelcomeListItem) {
 }
 
 const styles = StyleSheet.create({
-	welcomeItemContainer: {
+	container: {
 		flex: 1,
 		alignItems: 'center',
-		justifyContent: 'center',
+		height: '100%',
+		paddingTop: 30,
 	},
 
 	textContainer: {
-		flex: 1,
 		justifyContent: 'center',
 		width: '75%',
+		height: '25%',
 	},
 
 	titleText: {

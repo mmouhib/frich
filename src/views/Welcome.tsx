@@ -1,5 +1,5 @@
 import welcomeScreenData from '../constants/welcomeData';
-import { View, FlatList, ViewToken } from 'react-native';
+import { View, FlatList, ViewToken, Text } from 'react-native';
 import { IHomeScreenData } from '../types/types';
 import WelcomeListItem from '../components/WelcomePage/WelcomeListItem';
 import { useState, useRef } from 'react';
@@ -41,7 +41,7 @@ export default function Welcome() {
 
 	return (
 		<View>
-			<View style={{ flex: 6 }}>
+			<View style={{ height: '70%' }}>
 				<FlatList
 					ref={flatListRef}
 					data={welcomeScreenData}
@@ -50,10 +50,9 @@ export default function Welcome() {
 					horizontal
 					pagingEnabled
 					showsHorizontalScrollIndicator={false}
-					viewabilityConfig={{ itemVisiblePercentThreshold: 40 }}
+					viewabilityConfig={{ itemVisiblePercentThreshold: 10 }}
 					onViewableItemsChanged={_onViewableItemsChanged}
 					ListFooterComponent={Account}
-					extraData={Account}
 				/>
 			</View>
 
@@ -65,13 +64,21 @@ export default function Welcome() {
 			*/}
 
 			{currentPageIndex <= WELCOME_DATA_LENGTH - 1 && (
-				<View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' }}>
+				<View
+					style={{
+						height: '30%',
+						alignItems: 'center',
+						justifyContent: 'flex-start',
+						marginTop: '10%',
+					}}
+				>
 					<DotsSlider selectedIndex={currentPageIndex} />
 					<SlidesNavigator
 						currentPageIndex={currentPageIndex}
 						scrollToIndex={_scrollToIndex}
 						setCurrentPageIndex={setCurrentPageIndex}
 					/>
+					<Text>Skip</Text>
 				</View>
 			)}
 		</View>

@@ -1,23 +1,19 @@
-import { View, Text, StyleSheet, useWindowDimensions, ScaledSize, Image } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import colors from '../utils/colors';
 import CustomInput from '../components/Account/CustomInput';
 import { useState } from 'react';
-import Constants from 'expo-constants';
+import useDimentions from '../hooks/useDimensions';
 
 export default function Signup() {
-	const { height, width }: ScaledSize = useWindowDimensions();
+	const width: number = useDimentions().exactWidth;
+	const height: number = useDimentions().exactHeight;
 
 	const [name, setName] = useState<string>('');
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 
 	return (
-		<View
-			style={[
-				styles.container,
-				{ width: width, height: height + Constants.statusBarHeight * 2 },
-			]}
-		>
+		<View style={[styles.container, { height: height, width: width }]}>
 			{/* Header section */}
 			<View style={{ flex: 1 }}>
 				<Text style={styles.accountTitleText}>Let's get started</Text>
@@ -63,14 +59,12 @@ export default function Signup() {
 
 const styles = StyleSheet.create({
 	container: {
-		// backgroundColor: colors.lightGlass,
 		paddingTop: 60,
 	},
 
 	footerContainer: {
 		flex: 1,
 		backgroundColor: colors.lightGlass,
-
 		borderTopRightRadius: 50,
 		borderTopLeftRadius: 50,
 		alignItems: 'center',
