@@ -68,12 +68,14 @@ const styles = StyleSheet.create({
 	},
 
 	placeholder: {
-		width: '20%',
+		width: '30%',
+		borderRightColor: '#f1f1f1',
+		borderRightWidth: 1,
 		borderTopRightRadius: 0,
 		borderBottomRightRadius: 0,
 	},
 	input: {
-		width: '80%',
+		width: '70%',
 		borderTopLeftRadius: 0,
 		borderBottomLeftRadius: 0,
 	},
