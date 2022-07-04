@@ -1,11 +1,10 @@
 import welcomeScreenData from '../constants/welcomeData';
-import { View, FlatList, ViewToken, Text } from 'react-native';
+import { View, FlatList, ViewToken, Text, StyleSheet } from 'react-native';
 import { IHomeScreenData } from '../types/types';
 import WelcomeListItem from '../components/WelcomePage/WelcomeListItem';
 import { useState, useRef } from 'react';
 import DotsSlider from '../components/WelcomePage/DotsSlider';
 import SlidesNavigator from '../components/WelcomePage/SlidesNavigator';
-import Account from './Account';
 
 export default function Welcome() {
 	const WELCOME_DATA_LENGTH = welcomeScreenData.length;
@@ -52,35 +51,23 @@ export default function Welcome() {
 					showsHorizontalScrollIndicator={false}
 					viewabilityConfig={{ itemVisiblePercentThreshold: 10 }}
 					onViewableItemsChanged={_onViewableItemsChanged}
-					ListFooterComponent={Account}
 				/>
 			</View>
 
-			{/* 
-			in the next block we check if the current index is in the range of the welcome slides
-			if not, we remove the footer component so it does not render in the Account page
-			that's done by checking if the currentPage state is equal to the length of the welcomeData
-			array, which is changed to that in the _onViewableItemsChanged function.
-			*/}
-
-			{currentPageIndex <= WELCOME_DATA_LENGTH - 1 && (
-				<View
-					style={{
-						height: '30%',
-						alignItems: 'center',
-						justifyContent: 'flex-start',
-						marginTop: '10%',
-					}}
-				>
-					<DotsSlider selectedIndex={currentPageIndex} />
-					<SlidesNavigator
-						currentPageIndex={currentPageIndex}
-						scrollToIndex={_scrollToIndex}
-						setCurrentPageIndex={setCurrentPageIndex}
-					/>
-					<Text>Skip</Text>
-				</View>
-			)}
+			<View style={styles.footerContainer}>
+				<DotsSlider selectedIndex={currentPageIndex} />
+				<SlidesNavigator currentPageIndex={currentPageIndex} scrollToIndex={_scrollToIndex} />
+				<Text>Skip</Text>
+			</View>
 		</View>
 	);
 }
+
+const styles = StyleSheet.create({
+	footerContainer: {
+		height: '30%',
+		alignItems: 'center',
+		justifyContent: 'flex-start',
+		marginTop: '10%',
+	},
+});

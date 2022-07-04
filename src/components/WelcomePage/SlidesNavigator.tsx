@@ -5,7 +5,6 @@ import WelcomeData from '../../constants/welcomeData';
 interface ISlidesNavigator {
 	currentPageIndex: number;
 	scrollToIndex: (arg: number) => void;
-	setCurrentPageIndex: (arg: number) => void;
 }
 
 /**
@@ -32,11 +31,7 @@ function borderStyleShorthand(pageIndex: number, borderWidth: number): object {
 	}
 }
 
-export default function SlidesNavigator({
-	currentPageIndex,
-	scrollToIndex,
-	setCurrentPageIndex,
-}: ISlidesNavigator) {
+export default function SlidesNavigator({ currentPageIndex, scrollToIndex }: ISlidesNavigator) {
 	const BORDER_WIDTH = 3;
 
 	const WELCOME_DATA_LENGTH: number = WelcomeData.length;
@@ -47,7 +42,6 @@ export default function SlidesNavigator({
 	 */
 
 	const _onPress = () => {
-		currentPageIndex == WELCOME_DATA_LENGTH - 1 && setCurrentPageIndex(WELCOME_DATA_LENGTH);
 		currentPageIndex < WELCOME_DATA_LENGTH - 1 && scrollToIndex(currentPageIndex + 1);
 	};
 

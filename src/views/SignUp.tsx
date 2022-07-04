@@ -16,7 +16,9 @@ export default function Signup() {
 		<View style={[styles.container, { height: height, width: width }]}>
 			{/* Header section */}
 			<View style={{ flex: 1 }}>
-				<Text style={styles.accountTitleText}>Let's get started</Text>
+				<Text style={[{ fontFamily: 'Roboto_700Bold' }, styles.accountTitleText]}>
+					Let's get started
+				</Text>
 				<Image
 					style={{ width: '100%', height: '100%' }}
 					source={require('../../assets/Account/signup.png')}
@@ -27,30 +29,18 @@ export default function Signup() {
 			{/* Footer section */}
 			<View style={styles.footerContainer}>
 				<View style={{ flex: 1, width: '85%' }}>
+					<CustomInput value={name} setValue={setName} placeholder="Name" />
 					<CustomInput
-						value={name}
-						setValue={setName}
-						placeholder="name"
-						styleOverride={{
-							backgroundColor: '#fff',
-						}}
+						value={email}
+						setValue={setEmail}
+						placeholder="Email"
+						inputPlaceholder="name@company.domain"
 					/>
-					<CustomInput
-						value={name}
-						setValue={setName}
-						placeholder="name"
-						styleOverride={{
-							backgroundColor: '#fff',
-						}}
-					/>
-					<CustomInput
-						value={name}
-						setValue={setName}
-						placeholder="name"
-						styleOverride={{
-							backgroundColor: '#fff',
-						}}
-					/>
+					<CustomInput value={password} setValue={setPassword} placeholder="Password" />
+				</View>
+
+				<View>
+					
 				</View>
 			</View>
 		</View>
@@ -59,20 +49,17 @@ export default function Signup() {
 
 const styles = StyleSheet.create({
 	container: {
+		backgroundColor: '#red',
 		paddingTop: 60,
 	},
 
 	footerContainer: {
-		flex: 1,
-		backgroundColor: colors.lightGlass,
-		borderTopRightRadius: 50,
-		borderTopLeftRadius: 50,
+		flex: 2,
 		alignItems: 'center',
 		paddingTop: 30,
 	},
 
 	accountTitleText: {
-		fontWeight: 'bold',
 		fontSize: 30,
 		marginLeft: 20,
 	},
