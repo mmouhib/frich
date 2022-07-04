@@ -13,3 +13,5 @@ export interface IUseDimensions {
 	exactWidth: number;
 	exactHeight: number;
 }
+
+export type inputTypes = 'number' | 'password' | 'email' | 'text';

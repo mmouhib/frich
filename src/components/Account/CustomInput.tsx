@@ -3,12 +3,14 @@ import { useState, useRef } from 'react';
 import colors from '../../utils/colors';
 
 interface ICustomInput {
-	type?: any;
 	value: string;
 	setValue: (arg: string) => void;
 	placeholder: string;
 	styleOverride?: object;
 	inputPlaceholder?: string;
+	children: React.ReactNode;
+	hiddenPassword?: boolean;
+	setHiddenPassword?: (arg: boolean) => void;
 }
 
 export default function CustomInput({
@@ -17,6 +19,9 @@ export default function CustomInput({
 	placeholder,
 	styleOverride,
 	inputPlaceholder,
+	children,
+	hiddenPassword,
+	setHiddenPassword,
 }: ICustomInput) {
 	const [isFocused, setIsFocused] = useState<boolean>(false);
 
@@ -36,6 +41,7 @@ export default function CustomInput({
 				<Text style={{ fontWeight: '500' }}>{placeholder}</Text>
 			</Pressable>
 			<TextInput
+				secureTextEntry={hiddenPassword ?? false}
 				ref={inputRef}
 				onBlur={_onBlur}
 				onFocus={_onFocus}
@@ -47,6 +53,24 @@ export default function CustomInput({
 					setValue(newTextValue);
 				}}
 			/>
+			<Pressable
+				style={[
+					styles.inputComponents,
+					styles.icon,
+					{ padding: 0, alignItems: 'center', justifyContent: 'center' },
+				]}
+				onPress={() => {
+					//checking if the hiddenPassword props are passed or not
+					//because they are optional
+					if (hiddenPassword != null) {
+						if (setHiddenPassword != null) {
+							setHiddenPassword(!hiddenPassword);
+						}
+					}
+				}}
+			>
+				{children}
+			</Pressable>
 		</View>
 	);
 }
@@ -75,7 +99,12 @@ const styles = StyleSheet.create({
 		borderBottomRightRadius: 0,
 	},
 	input: {
-		width: '70%',
+		width: '55%',
+		borderRadius: 0,
+	},
+
+	icon: {
+		width: '15%',
 		borderTopLeftRadius: 0,
 		borderBottomLeftRadius: 0,
 	},
