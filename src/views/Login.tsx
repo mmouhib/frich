@@ -1,22 +1,24 @@
 import { StyleSheet, KeyboardAvoidingView } from 'react-native';
-import SignupHeader from '../components/Account/Signup/SignupHeader';
-import SignupForm from '../components/Account/Signup/SignupForm';
+import LoginHeader from '../components/Account/Login/LoginHeader';
 import AccountFooter from '../components/Account/AccountFooter';
+import LoginForm from '../components/Account/Login/LoginForm';
 
-export default function Signup() {
+export default function Login() {
 	return (
 		<KeyboardAvoidingView
 			behavior={'position'}
 			style={styles.container}
 			contentContainerStyle={styles.containerStyleForPosition}
 		>
-			<SignupHeader />
-			<SignupForm />
-			<AccountFooter mainButtonText="Sign Up" secondaryButtonText="Already a member ? Log in" />
+			<LoginHeader />
+			<LoginForm />
+			<AccountFooter
+				mainButtonText="Log In"
+				secondaryButtonText="Dont have an account ? Create one"
+			/>
 		</KeyboardAvoidingView>
 	);
 }
-
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,

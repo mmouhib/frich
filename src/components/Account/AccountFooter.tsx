@@ -1,11 +1,16 @@
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import colors from '../../utils/colors';
 
-export default function SignupFooter() {
+interface IFormFooter {
+	mainButtonText: string;
+	secondaryButtonText: string;
+}
+
+export default function AccountFooter({ mainButtonText, secondaryButtonText }: IFormFooter) {
 	return (
 		<View style={{ flex: 1, width: '85%' }}>
 			<Pressable style={styles.mainButton} android_ripple={{ color: colors.rippleColor }}>
-				<Text style={styles.mainButtonText}>Log in</Text>
+				<Text style={styles.mainButtonText}>{mainButtonText}</Text>
 			</Pressable>
 			<View style={styles.separator}>
 				<View style={styles.lineSeparator}></View>
@@ -13,7 +18,7 @@ export default function SignupFooter() {
 				<View style={styles.lineSeparator}></View>
 			</View>
 			<Pressable style={styles.button} android_ripple={{ color: colors.rippleColor }}>
-				<Text style={styles.buttonText}>Create an account</Text>
+				<Text style={styles.buttonText}>{secondaryButtonText}</Text>
 			</Pressable>
 		</View>
 	);
