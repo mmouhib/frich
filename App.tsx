@@ -8,6 +8,7 @@ import useDimentions from './src/hooks/useDimensions';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import { Roboto_700Bold } from '@expo-google-fonts/roboto';
+import Constants from 'expo-constants';
 
 export default function App() {
 	const { exactHeight, exactWidth } = useDimentions();
@@ -27,32 +28,25 @@ export default function App() {
 		})();
 	}, []);
 
-	const _onLayout = useCallback(() => {
-		if (isReady) {
-			SplashScreen.hideAsync();
-		}
-	}, [isReady]);
-
 	if (!isReady) {
 		return null;
 	}
 
 	return (
 		<View
-			style={[styles.container, { width: exactWidth, height: exactHeight }]}
-			onLayout={_onLayout}
+			style={{
+				width: exactWidth,
+				height: exactHeight,
+				backgroundColor: colors.lightGlass,
+				marginTop: Constants.statusBarHeight,
+			}}
+			onLayout={() => {
+				if (isReady) SplashScreen.hideAsync();
+			}}
 		>
-			<StatusBar style="auto" />
+			<StatusBar style="dark" backgroundColor={colors.lightGlass} />
 			{/* <Welcome /> */}
 			<Signup />
 		</View>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		backgroundColor: colors.lightGlass,
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-});

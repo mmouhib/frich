@@ -8,13 +8,11 @@ export default function SignupForm() {
 	const [name, setName] = useState<string>('');
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
-	{
-		/* <MaterialCommunityIcons name="eye" size={24} color="black" /> */
-	}
+
 	const [hiddenPassword, setHiddenPassword] = useState<boolean>(true);
 
 	return (
-		<View style={{ flex: 1.5, width: '85%' }}>
+		<View style={{ flex: 2, width: '85%' }}>
 			<CustomInput value={name} setValue={setName} placeholder="Name">
 				<MaterialCommunityIcons name="card-text" size={24} color="black" />
 			</CustomInput>

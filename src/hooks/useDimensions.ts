@@ -17,7 +17,7 @@ export default function useDimentions(): IUseDimensions {
 	const [exactWidth, setExactWidth] = useState<number>(width);
 
 	useEffect(() => {
-		setExactHeight(height + Constants.statusBarHeight * 2);
+		setExactHeight(height);
 		setExactWidth(width);
 	}, []);
 
