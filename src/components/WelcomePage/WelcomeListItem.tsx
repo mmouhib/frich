@@ -1,9 +1,9 @@
 import { IHomeScreenData } from '../../types/types';
-import { View, Text, StyleSheet, useWindowDimensions, Image, ScaledSize } from 'react-native';
-import useDimentions from '../../hooks/useDimensions';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import useDimensions from '../../hooks/useDimensions';
 
 export default function WelcomeListItem({ data }: { data: IHomeScreenData }) {
-	const { exactWidth } = useDimentions();
+	const { exactWidth } = useDimensions();
 
 	return (
 		<View style={[styles.container, { width: exactWidth }]}>
@@ -11,12 +11,7 @@ export default function WelcomeListItem({ data }: { data: IHomeScreenData }) {
 				<Text style={styles.titleText}>{data.title}</Text>
 			</View>
 
-			<View
-				style={{
-					width: '90%',
-					height: '50%',
-				}}
-			>
+			<View style={styles.imageContainer}>
 				<Image
 					source={data.image}
 					style={{ width: '100%', height: '100%' }}
@@ -37,6 +32,11 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		height: '100%',
 		paddingTop: 30,
+	},
+
+	imageContainer: {
+		width: '90%',
+		height: '50%',
 	},
 
 	textContainer: {

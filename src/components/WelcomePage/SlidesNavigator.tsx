@@ -1,10 +1,11 @@
-import { View, StyleSheet, Text, Pressable } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import WelcomeData from '../../constants/welcomeData';
 
 interface ISlidesNavigator {
 	currentPageIndex: number;
 	scrollToIndex: (arg: number) => void;
+	navigation: any;
 }
 
 /**
@@ -31,7 +32,11 @@ function borderStyleShorthand(pageIndex: number, borderWidth: number): object {
 	}
 }
 
-export default function SlidesNavigator({ currentPageIndex, scrollToIndex }: ISlidesNavigator) {
+export default function SlidesNavigator({
+	currentPageIndex,
+	scrollToIndex,
+	navigation,
+}: ISlidesNavigator) {
 	const BORDER_WIDTH = 3;
 
 	const WELCOME_DATA_LENGTH: number = WelcomeData.length;
@@ -42,6 +47,7 @@ export default function SlidesNavigator({ currentPageIndex, scrollToIndex }: ISl
 	 */
 
 	const _onPress = () => {
+		currentPageIndex == WELCOME_DATA_LENGTH - 1 && navigation.navigate('Login');
 		currentPageIndex < WELCOME_DATA_LENGTH - 1 && scrollToIndex(currentPageIndex + 1);
 	};
 

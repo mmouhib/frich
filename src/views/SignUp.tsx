@@ -3,7 +3,7 @@ import SignupHeader from '../components/Account/Signup/SignupHeader';
 import SignupForm from '../components/Account/Signup/SignupForm';
 import AccountFooter from '../components/Account/AccountFooter';
 
-export default function Signup() {
+export default function Signup({ navigation }: any) {
 	return (
 		<KeyboardAvoidingView
 			behavior={'position'}
@@ -12,7 +12,13 @@ export default function Signup() {
 		>
 			<SignupHeader />
 			<SignupForm />
-			<AccountFooter mainButtonText="Sign Up" secondaryButtonText="Already a member ? Log in" />
+			<AccountFooter
+				mainButtonText="Sign Up"
+				secondaryButtonText="Already a member ? Log in"
+				navigationFunction={() => {
+					navigation.navigate('Login');
+				}}
+			/>
 		</KeyboardAvoidingView>
 	);
 }

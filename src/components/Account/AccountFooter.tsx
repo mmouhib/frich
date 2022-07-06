@@ -4,9 +4,14 @@ import colors from '../../utils/colors';
 interface IFormFooter {
 	mainButtonText: string;
 	secondaryButtonText: string;
+	navigationFunction: () => void;
 }
 
-export default function AccountFooter({ mainButtonText, secondaryButtonText }: IFormFooter) {
+export default function AccountFooter({
+	mainButtonText,
+	secondaryButtonText,
+	navigationFunction,
+}: IFormFooter) {
 	return (
 		<View style={{ flex: 1, width: '85%' }}>
 			<Pressable style={styles.mainButton} android_ripple={{ color: colors.rippleColor }}>
@@ -17,7 +22,11 @@ export default function AccountFooter({ mainButtonText, secondaryButtonText }: I
 				<Text style={{ color: '#a0a0a0' }}>OR</Text>
 				<View style={styles.lineSeparator}></View>
 			</View>
-			<Pressable style={styles.button} android_ripple={{ color: colors.rippleColor }}>
+			<Pressable
+				style={styles.button}
+				android_ripple={{ color: colors.rippleColor }}
+				onPress={navigationFunction}
+			>
 				<Text style={styles.buttonText}>{secondaryButtonText}</Text>
 			</Pressable>
 		</View>

@@ -7,10 +7,10 @@
 
 import { useState, useEffect } from 'react';
 import { useWindowDimensions, ScaledSize } from 'react-native';
-import Constants from 'expo-constants';
+//import Constants from 'expo-constants';
 import { IUseDimensions } from '../types/types';
 
-export default function useDimentions(): IUseDimensions {
+export default function useDimensions(): IUseDimensions {
 	const { height, width }: ScaledSize = useWindowDimensions();
 
 	const [exactHeight, setExactHeight] = useState<number>(0);

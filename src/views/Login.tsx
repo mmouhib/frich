@@ -3,7 +3,7 @@ import LoginHeader from '../components/Account/Login/LoginHeader';
 import AccountFooter from '../components/Account/AccountFooter';
 import LoginForm from '../components/Account/Login/LoginForm';
 
-export default function Login() {
+export default function Login({ navigation }: any) {
 	return (
 		<KeyboardAvoidingView
 			behavior={'position'}
@@ -15,6 +15,9 @@ export default function Login() {
 			<AccountFooter
 				mainButtonText="Log In"
 				secondaryButtonText="Dont have an account ? Create one"
+				navigationFunction={() => {
+					navigation.navigate('Signup');
+				}}
 			/>
 		</KeyboardAvoidingView>
 	);
