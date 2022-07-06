@@ -36,7 +36,7 @@ export default function CustomInput({
 	};
 
 	return (
-		<View style={[styles.container, { borderWidth: isFocused ? 2 : 0 }]}>
+		<View style={[styles.container, { borderWidth: isFocused ? 2 : 0 }, styleOverride ?? null]}>
 			<Pressable style={[styles.inputComponents, styles.placeholder]} onPress={_onPress}>
 				<Text style={{ fontWeight: '500' }}>{placeholder}</Text>
 			</Pressable>
@@ -45,7 +45,7 @@ export default function CustomInput({
 				ref={inputRef}
 				onBlur={_onBlur}
 				onFocus={_onFocus}
-				style={[styles.inputComponents, styles.input, styleOverride ?? null]}
+				style={[styles.inputComponents, styles.input]}
 				value={value}
 				placeholder={inputPlaceholder ?? placeholder}
 				placeholderTextColor="lightgrey"

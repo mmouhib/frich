@@ -5,17 +5,23 @@ interface IFormFooter {
 	mainButtonText: string;
 	secondaryButtonText: string;
 	navigationFunction: () => void;
+	mainButtonFunction?: () => void;
 }
 
 export default function AccountFooter({
 	mainButtonText,
 	secondaryButtonText,
 	navigationFunction,
+	mainButtonFunction,
 }: IFormFooter) {
 	return (
 		<View style={{ flex: 1, width: '85%' }}>
-			<Pressable style={styles.mainButton} android_ripple={{ color: colors.rippleColor }}>
-				<Text style={styles.mainButtonText}>{mainButtonText}</Text>
+			<Pressable
+				style={[styles.button, { backgroundColor: colors.mainColor }]}
+				android_ripple={{ color: colors.rippleColor }}
+				onPress={mainButtonFunction}
+			>
+				<Text style={{ color: '#fff', fontFamily: 'Roboto_700Bold' }}>{mainButtonText}</Text>
 			</Pressable>
 			<View style={styles.separator}>
 				<View style={styles.lineSeparator}></View>
@@ -23,43 +29,25 @@ export default function AccountFooter({
 				<View style={styles.lineSeparator}></View>
 			</View>
 			<Pressable
-				style={styles.button}
+				style={[styles.button, { backgroundColor: '#fff' }]}
 				android_ripple={{ color: colors.rippleColor }}
 				onPress={navigationFunction}
 			>
-				<Text style={styles.buttonText}>{secondaryButtonText}</Text>
+				<Text style={{ color: colors.mainColor, fontFamily: 'Roboto_700Bold' }}>
+					{secondaryButtonText}
+				</Text>
 			</Pressable>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	mainButton: {
-		width: '100%',
-		height: 40,
-		backgroundColor: colors.mainColor,
-		borderRadius: 7,
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-
 	button: {
 		width: '100%',
 		height: 40,
-		backgroundColor: '#fff',
 		borderRadius: 7,
 		alignItems: 'center',
 		justifyContent: 'center',
-	},
-
-	mainButtonText: {
-		color: '#fff',
-		fontFamily: 'Roboto_700Bold',
-	},
-
-	buttonText: {
-		color: colors.mainColor,
-		fontFamily: 'Roboto_700Bold',
 	},
 
 	lineSeparator: {

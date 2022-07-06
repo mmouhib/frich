@@ -4,14 +4,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../../utils/colors';
 import { useState } from 'react';
 
-export default function LoginForm() {
+export default function LoginForm({ navigation }: any) {
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 
 	const [hiddenPassword, setHiddenPassword] = useState<boolean>(true);
 
 	return (
-		<View style={{ flex: 2, width: '85%' }}>
+		<View style={{ flex: 1.5, width: '85%' }}>
 			<Text style={styles.leadingText}>enter your credentials</Text>
 
 			<CustomInput
@@ -38,7 +38,14 @@ export default function LoginForm() {
 			</CustomInput>
 
 			<TouchableOpacity>
-				<Text style={styles.forgotPasswordText}>Forgot Password ?</Text>
+				<Text
+					style={styles.forgotPasswordText}
+					onPress={() => {
+						navigation.navigate('ForgotPassword');
+					}}
+				>
+					Forgot Password ?
+				</Text>
 			</TouchableOpacity>
 		</View>
 	);

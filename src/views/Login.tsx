@@ -11,7 +11,7 @@ export default function Login({ navigation }: any) {
 			contentContainerStyle={styles.containerStyleForPosition}
 		>
 			<LoginHeader />
-			<LoginForm />
+			<LoginForm navigation={navigation} />
 			<AccountFooter
 				mainButtonText="Log In"
 				secondaryButtonText="Dont have an account ? Create one"

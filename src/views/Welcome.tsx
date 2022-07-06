@@ -6,6 +6,7 @@ import { useState, useRef } from 'react';
 import DotsSlider from '../components/WelcomePage/DotsSlider';
 import SlidesNavigator from '../components/WelcomePage/SlidesNavigator';
 
+// todo: typedef navigation prop
 export default function Welcome({ navigation }: any) {
 	const WELCOME_DATA_LENGTH = welcomeScreenData.length;
 

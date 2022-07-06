@@ -1,6 +1,3 @@
-//import Constants from 'expo-constants';
-// import { StatusBar } from 'expo-status-bar';
-
 import { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Welcome from './src/views/Welcome';
@@ -13,6 +10,15 @@ import * as Font from 'expo-font';
 import { Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ForgotPassword from './src/views/ForgotPassword';
+import ForgotPasswordEmailSent from './src/views/ForgotPasswordEmailSent';
+import { StatusBar } from 'react-native';
+
+/*
+ * import Constants from 'expo-constants';
+ * import { StatusBar } from 'expo-status-bar';
+ * <StatusBar style="dark" backgroundColor={colors.lightGlass} />
+ * */
 
 const stack = createNativeStackNavigator();
 
@@ -49,14 +55,30 @@ export default function App() {
 
 	if (!isReady) return null;
 
+	const hideHeader = {
+		headerShown: false,
+	};
+
 	return (
 		<NavigationContainer>
 			<View style={styles.container} onLayout={_onLayout}>
-				{/*<StatusBar style="dark" backgroundColor={colors.lightGlass} />*/}
-				<stack.Navigator initialRouteName="Welcome">
-					<stack.Screen name="Welcome" component={Welcome} />
-					<stack.Screen name="Login" component={Login} options={{ title: 'login' }} />
-					<stack.Screen name="Signup" component={Signup} />
+				<StatusBar />
+				<stack.Navigator initialRouteName="ForgotPassword">
+					<stack.Screen name="Welcome" component={Welcome} options={hideHeader} />
+					<stack.Screen name="Login" component={Login} options={hideHeader} />
+					<stack.Screen name="Signup" component={Signup} options={hideHeader} />
+
+					<stack.Screen
+						name="ForgotPassword"
+						component={ForgotPassword}
+						options={hideHeader}
+					/>
+
+					<stack.Screen
+						name="ForgotPasswordEmailSent"
+						component={ForgotPasswordEmailSent}
+						options={hideHeader}
+					/>
 				</stack.Navigator>
 			</View>
 		</NavigationContainer>
