@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import Welcome from './src/views/Welcome';
 import Signup from './src/views/SignUp';
 import Login from './src/views/Login';
@@ -14,6 +14,9 @@ import ForgotPassword from './src/views/ForgotPassword';
 import ForgotPasswordEmailSent from './src/views/ForgotPasswordEmailSent';
 import { StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MatchType from './src/views/MatchType';
+import { Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
+import { Mukta_500Medium, Mukta_600SemiBold } from '@expo-google-fonts/mukta';
 
 /*
  * import Constants from 'expo-constants';
@@ -34,7 +37,13 @@ export default function App() {
 		(async () => {
 			try {
 				await SplashScreen.preventAutoHideAsync();
-				await Font.loadAsync({ Roboto_700Bold });
+				await Font.loadAsync({
+					Roboto_700Bold,
+					Poppins_400Regular,
+					Poppins_600SemiBold,
+					Mukta_500Medium,
+					Mukta_600SemiBold,
+				});
 			} catch (e) {
 				console.error(e);
 			} finally {
@@ -75,6 +84,7 @@ export default function App() {
 					<stack.Screen name="Signup" component={Signup} />
 					<stack.Screen name="ForgotPassword" component={ForgotPassword} />
 					<stack.Screen name="ForgotPasswordEmailSent" component={ForgotPasswordEmailSent} />
+					<stack.Screen name="MatchType" component={MatchType} />
 				</stack.Navigator>
 			</View>
 		</NavigationContainer>
