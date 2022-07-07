@@ -13,11 +13,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ForgotPassword from './src/views/ForgotPassword';
 import ForgotPasswordEmailSent from './src/views/ForgotPasswordEmailSent';
 import { StatusBar } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /*
  * import Constants from 'expo-constants';
  * import { StatusBar } from 'expo-status-bar';
  * <StatusBar style="dark" backgroundColor={colors.lightGlass} />
+ * marginTop: Constants.statusBarHeight - Constants.statusBarHeight * 0.2,
  * */
 
 const stack = createNativeStackNavigator();
@@ -26,6 +28,7 @@ export default function App() {
 	const { exactHeight, exactWidth } = useDimensions();
 
 	const [isReady, setIsReady] = useState<boolean>(false);
+	const [firstLaunch, setFirstLaunch] = useState<boolean>(true);
 
 	useEffect(() => {
 		(async () => {
@@ -33,21 +36,28 @@ export default function App() {
 				await SplashScreen.preventAutoHideAsync();
 				await Font.loadAsync({ Roboto_700Bold });
 			} catch (e) {
-				console.log(e);
+				console.error(e);
 			} finally {
 				setIsReady(true);
 			}
 		})();
+
+		(async () => {
+			const isFirstLaunched = await AsyncStorage.getItem('firstLaunch');
+			if (null == isFirstLaunched) {
+				setFirstLaunch(true);
+				AsyncStorage.setItem('firstLaunch', 'false');
+			} else {
+				setFirstLaunch(false);
+			}
+		})();
 	}, []);
 
-	const styles = StyleSheet.create({
-		container: {
-			width: exactWidth,
-			height: exactHeight,
-			backgroundColor: colors.lightGlass,
-			// marginTop: Constants.statusBarHeight - Constants.statusBarHeight * 0.2,
-		},
-	});
+	const containerStyle = {
+		width: exactWidth,
+		height: exactHeight,
+		backgroundColor: colors.lightGlass,
+	};
 
 	const _onLayout = () => {
 		if (isReady) SplashScreen.hideAsync();
@@ -55,30 +65,16 @@ export default function App() {
 
 	if (!isReady) return null;
 
-	const hideHeader = {
-		headerShown: false,
-	};
-
 	return (
 		<NavigationContainer>
-			<View style={styles.container} onLayout={_onLayout}>
+			<View style={containerStyle} onLayout={_onLayout}>
 				<StatusBar />
-				<stack.Navigator initialRouteName="ForgotPassword">
-					<stack.Screen name="Welcome" component={Welcome} options={hideHeader} />
-					<stack.Screen name="Login" component={Login} options={hideHeader} />
-					<stack.Screen name="Signup" component={Signup} options={hideHeader} />
-
-					<stack.Screen
-						name="ForgotPassword"
-						component={ForgotPassword}
-						options={hideHeader}
-					/>
-
-					<stack.Screen
-						name="ForgotPasswordEmailSent"
-						component={ForgotPasswordEmailSent}
-						options={hideHeader}
-					/>
+				<stack.Navigator screenOptions={{ headerShown: false }}>
+					{firstLaunch && <stack.Screen name="Welcome" component={Welcome} />}
+					<stack.Screen name="Login" component={Login} />
+					<stack.Screen name="Signup" component={Signup} />
+					<stack.Screen name="ForgotPassword" component={ForgotPassword} />
+					<stack.Screen name="ForgotPasswordEmailSent" component={ForgotPasswordEmailSent} />
 				</stack.Navigator>
 			</View>
 		</NavigationContainer>

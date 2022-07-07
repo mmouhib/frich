@@ -37,15 +37,12 @@ export default function LoginForm({ navigation }: any) {
 				)}
 			</CustomInput>
 
-			<TouchableOpacity>
-				<Text
-					style={styles.forgotPasswordText}
-					onPress={() => {
-						navigation.navigate('ForgotPassword');
-					}}
-				>
-					Forgot Password ?
-				</Text>
+			<TouchableOpacity
+				onPress={() => {
+					navigation.navigate('ForgotPassword');
+				}}
+			>
+				<Text style={styles.forgotPasswordText}>Forgot Password ?</Text>
 			</TouchableOpacity>
 		</View>
 	);
