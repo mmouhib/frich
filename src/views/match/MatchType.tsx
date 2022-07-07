@@ -1,11 +1,16 @@
 import { View, StyleSheet, Text, Pressable } from 'react-native';
-import colors from '../utils/colors';
-import TypeSelection from '../components/CustomComponents/TypeSelection';
-import { useState } from 'react';
+import colors from '../../utils/colors';
+import TypeSelection from '../../components/CustomComponents/TypeSelection';
+import { useEffect, useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 
 export default function MatchType({ navigation }: any) {
 	const [selections, setSelections] = useState<boolean[]>([false, false]);
+	const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
+
+	useEffect(() => {
+		selections.includes(true) ? setButtonDisabled(false) : setButtonDisabled(true);
+	}, [selections]);
 
 	return (
 		<View style={styles.container}>
@@ -34,10 +39,14 @@ export default function MatchType({ navigation }: any) {
 
 				{/*todo: make this button disabled if none of the choices are selected*/}
 				<Pressable
-					style={[styles.button, { backgroundColor: colors.mainColor }]}
+					pointerEvents={buttonDisabled ? 'none' : 'auto'}
+					style={[
+						styles.button,
+						{ backgroundColor: buttonDisabled ? '#bbbbbb' : colors.mainColor },
+					]}
 					android_ripple={{ color: colors.rippleColor }}
 					onPress={() => {
-						navigation.navigate('Signup');
+						navigation.navigate('PlayersNumber');
 					}}
 				>
 					<Text style={{ color: '#fff', fontFamily: 'Roboto_700Bold', marginRight: 10 }}>

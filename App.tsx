@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import Welcome from './src/views/Welcome';
-import Signup from './src/views/SignUp';
-import Login from './src/views/Login';
+import Signup from './src/views/account/SignUp';
+import Login from './src/views/account/Login';
 import colors from './src/utils/colors';
 import useDimensions from './src/hooks/useDimensions';
 import * as SplashScreen from 'expo-splash-screen';
@@ -10,13 +10,14 @@ import * as Font from 'expo-font';
 import { Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ForgotPassword from './src/views/ForgotPassword';
-import ForgotPasswordEmailSent from './src/views/ForgotPasswordEmailSent';
+import ForgotPassword from './src/views/account/ForgotPassword';
+import ForgotPasswordEmailSent from './src/views/account/ForgotPasswordEmailSent';
 import { StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import MatchType from './src/views/MatchType';
+import MatchType from './src/views/match/MatchType';
 import { Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import { Mukta_500Medium, Mukta_600SemiBold } from '@expo-google-fonts/mukta';
+import PlayersNumber from './src/views/match/PlayersNumber';
 
 /*
  * import Constants from 'expo-constants';
@@ -80,11 +81,12 @@ export default function App() {
 				<StatusBar />
 				<stack.Navigator screenOptions={{ headerShown: false }}>
 					{firstLaunch && <stack.Screen name="Welcome" component={Welcome} />}
-					<stack.Screen name="Login" component={Login} />
-					<stack.Screen name="Signup" component={Signup} />
-					<stack.Screen name="ForgotPassword" component={ForgotPassword} />
-					<stack.Screen name="ForgotPasswordEmailSent" component={ForgotPasswordEmailSent} />
+					{/*<stack.Screen name="Login" component={Login} />*/}
+					{/*<stack.Screen name="Signup" component={Signup} />*/}
+					{/*<stack.Screen name="ForgotPassword" component={ForgotPassword} />*/}
+					{/*<stack.Screen name="ForgotPasswordEmailSent" component={ForgotPasswordEmailSent} />*/}
 					<stack.Screen name="MatchType" component={MatchType} />
+					<stack.Screen name="PlayersNumber" component={PlayersNumber} />
 				</stack.Navigator>
 			</View>
 		</NavigationContainer>

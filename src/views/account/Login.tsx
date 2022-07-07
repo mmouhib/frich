@@ -1,7 +1,7 @@
 import { StyleSheet, KeyboardAvoidingView } from 'react-native';
-import LoginHeader from '../components/Account/Login/LoginHeader';
-import AccountFooter from '../components/Account/AccountFooter';
-import LoginForm from '../components/Account/Login/LoginForm';
+import LoginHeader from '../../components/Account/Login/LoginHeader';
+import AccountFooter from '../../components/Account/AccountFooter';
+import LoginForm from '../../components/Account/Login/LoginForm';
 
 export default function Login({ navigation }: any) {
 	return (

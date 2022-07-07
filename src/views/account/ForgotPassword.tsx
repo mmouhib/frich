@@ -1,9 +1,9 @@
 import { StyleSheet, KeyboardAvoidingView, Image, View, Text } from 'react-native';
-import CustomInput from '../components/CustomComponents/CustomInput';
+import CustomInput from '../../components/CustomComponents/CustomInput';
 import { useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Roboto_700Bold } from '@expo-google-fonts/roboto';
-import AccountFooter from '../components/Account/AccountFooter';
+import AccountFooter from '../../components/Account/AccountFooter';
 
 export default function ForgotPassword({ navigation }: any) {
 	const [email, setEmail] = useState<string>('');
@@ -13,7 +13,7 @@ export default function ForgotPassword({ navigation }: any) {
 			<View style={{ flex: 2, width: '100%' }}>
 				<Image
 					style={{ width: '100%', height: '100%' }}
-					source={require('../../assets/passwordReset/forgotPassword.png')}
+					source={require('../../../assets/passwordReset/forgotPassword.png')}
 					resizeMode="contain"
 				/>
 			</View>

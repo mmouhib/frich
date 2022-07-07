@@ -1,7 +1,7 @@
 import { Image, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import AccountFooter from '../components/Account/AccountFooter';
+import AccountFooter from '../../components/Account/AccountFooter';
 import * as Linking from 'expo-linking';
-import colors from '../utils/colors';
+import colors from '../../utils/colors';
 
 export default function ForgotPasswordEmailSent({ navigation }: any) {
 	return (
@@ -9,7 +9,7 @@ export default function ForgotPasswordEmailSent({ navigation }: any) {
 			<View style={{ flex: 2, width: '100%' }}>
 				<Image
 					style={{ width: '100%', height: '100%' }}
-					source={require('../../assets/passwordReset/mailSent.png')}
+					source={require('../../../assets/passwordReset/mailSent.png')}
 					resizeMode="contain"
 				/>
 			</View>

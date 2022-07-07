@@ -1,7 +1,7 @@
 import { StyleSheet, KeyboardAvoidingView } from 'react-native';
-import SignupHeader from '../components/Account/Signup/SignupHeader';
-import SignupForm from '../components/Account/Signup/SignupForm';
-import AccountFooter from '../components/Account/AccountFooter';
+import SignupHeader from '../../components/Account/Signup/SignupHeader';
+import SignupForm from '../../components/Account/Signup/SignupForm';
+import AccountFooter from '../../components/Account/AccountFooter';
 
 export default function Signup({ navigation }: any) {
 	return (
