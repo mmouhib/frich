@@ -1,14 +1,20 @@
 import { View, StyleSheet, Text, Pressable } from 'react-native';
 import colors from '../../utils/colors';
 import TypeSelection from '../../components/CustomComponents/TypeSelection';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
+import { matchContext as _matchContext } from '../../context/match/MatchContext';
 
 export default function MatchType({ navigation }: any) {
 	const [selections, setSelections] = useState<boolean[]>([false, false]);
 	const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
 
+	const matchContext = useContext(_matchContext);
+
 	useEffect(() => {
+		//set the context value to the correct index of selected option
+		matchContext?.setMatchType(selections.indexOf(true) + 1);
+		//make button active after selecting an option
 		selections.includes(true) ? setButtonDisabled(false) : setButtonDisabled(true);
 	}, [selections]);
 
@@ -37,7 +43,6 @@ export default function MatchType({ navigation }: any) {
 					}}
 				/>
 
-				{/*todo: make this button disabled if none of the choices are selected*/}
 				<Pressable
 					pointerEvents={buttonDisabled ? 'none' : 'auto'}
 					style={[
@@ -88,3 +93,5 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 });
+
+//29432635

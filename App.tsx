@@ -18,6 +18,7 @@ import MatchType from './src/views/match/MatchType';
 import { Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import { Mukta_500Medium, Mukta_600SemiBold } from '@expo-google-fonts/mukta';
 import PlayersNumber from './src/views/match/PlayersNumber';
+import MatchContextComponent from './src/context/match/MatchContext';
 
 /*
  * import Constants from 'expo-constants';
@@ -79,15 +80,20 @@ export default function App() {
 		<NavigationContainer>
 			<View style={containerStyle} onLayout={_onLayout}>
 				<StatusBar />
-				<stack.Navigator screenOptions={{ headerShown: false }}>
-					{firstLaunch && <stack.Screen name="Welcome" component={Welcome} />}
-					{/*<stack.Screen name="Login" component={Login} />*/}
-					{/*<stack.Screen name="Signup" component={Signup} />*/}
-					{/*<stack.Screen name="ForgotPassword" component={ForgotPassword} />*/}
-					{/*<stack.Screen name="ForgotPasswordEmailSent" component={ForgotPasswordEmailSent} />*/}
-					<stack.Screen name="MatchType" component={MatchType} />
-					<stack.Screen name="PlayersNumber" component={PlayersNumber} />
-				</stack.Navigator>
+				<MatchContextComponent>
+					<stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="MatchType">
+						{firstLaunch && <stack.Screen name="Welcome" component={Welcome} />}
+						<stack.Screen name="Login" component={Login} />
+						<stack.Screen name="Signup" component={Signup} />
+						<stack.Screen name="ForgotPassword" component={ForgotPassword} />
+						<stack.Screen
+							name="ForgotPasswordEmailSent"
+							component={ForgotPasswordEmailSent}
+						/>
+						<stack.Screen name="MatchType" component={MatchType} />
+						<stack.Screen name="PlayersNumber" component={PlayersNumber} />
+					</stack.Navigator>
+				</MatchContextComponent>
 			</View>
 		</NavigationContainer>
 	);

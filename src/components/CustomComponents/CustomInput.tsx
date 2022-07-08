@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput, View, Text, Pressable } from 'react-native';
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import colors from '../../utils/colors';
 
 interface ICustomInput {
@@ -60,8 +60,7 @@ export default function CustomInput({
 					{ padding: 0, alignItems: 'center', justifyContent: 'center' },
 				]}
 				onPress={() => {
-					//checking if the hiddenPassword props are passed or not
-					//because they are optional
+					//checking if props are null or not because they are optional
 					if (hiddenPassword != null) {
 						if (setHiddenPassword != null) {
 							setHiddenPassword(!hiddenPassword);
