@@ -1,76 +1,62 @@
-import { View, StyleSheet, Pressable } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import WelcomeData from '../../constants/welcomeData';
+import colors from '../../utils/colors';
 
 interface ISlidesNavigator {
 	currentPageIndex: number;
 	scrollToIndex: (arg: number) => void;
-	navigation: any;
 }
 
-/**
- * the following fn calculates the needed border width
- * for the arrow navigator to match the current page
- */
-function borderStyleShorthand(pageIndex: number, borderWidth: number): object {
-	switch (pageIndex) {
-		case 1:
-			return {
-				borderTopWidth: borderWidth,
-				borderRightWidth: borderWidth,
-			};
-		case 2:
-			return {
-				borderTopWidth: borderWidth,
-				borderRightWidth: borderWidth,
-				borderBottomWidth: borderWidth,
-			};
-		case 3:
-			return { borderWidth: borderWidth };
-		default:
-			return {};
-	}
-}
-
-export default function SlidesNavigator({
-	currentPageIndex,
-	scrollToIndex,
-	navigation,
-}: ISlidesNavigator) {
-	const BORDER_WIDTH = 3;
-
+export default function SlidesNavigator({ currentPageIndex, scrollToIndex }: ISlidesNavigator) {
 	const WELCOME_DATA_LENGTH: number = WelcomeData.length;
 
-	/*
-	 todo: make a function that calculates the percentage of the index
-	  from the length of the welcomeData list instead of hard coding them (in lines 20 -> 26)
-	 */
+	const gotoNextSlide = () => {
+		if (!(currentPageIndex == WELCOME_DATA_LENGTH - 1)) {
+			scrollToIndex(currentPageIndex + 1);
+		}
+	};
 
-	const _onPress = () => {
-		currentPageIndex == WELCOME_DATA_LENGTH - 1 && navigation.navigate('Login');
-		currentPageIndex < WELCOME_DATA_LENGTH - 1 && scrollToIndex(currentPageIndex + 1);
+	const gotoLastIndex = () => {
+		scrollToIndex(WELCOME_DATA_LENGTH - 1);
 	};
 
 	return (
-		<Pressable style={styles.container} onPress={_onPress}>
-			<View style={[styles.iconContainer, borderStyleShorthand(currentPageIndex, BORDER_WIDTH)]}>
-				<Feather borderRadius={50} name="arrow-right" size={24} color="#509ce4" />
-			</View>
-		</Pressable>
+		<View style={styles.container}>
+			<TouchableOpacity onPress={gotoLastIndex} style={[styles.button, styles.secondaryButton]}>
+				<Text style={{ color: '#000', fontWeight: 'normal' }}>Skip</Text>
+			</TouchableOpacity>
+
+			<TouchableOpacity onPress={gotoNextSlide} style={[styles.button, styles.mainButton]}>
+				<Text style={{ color: '#fff' }}>Next</Text>
+			</TouchableOpacity>
+		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
+		width: '100%',
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+	},
+
+	button: {
+		width: '30%',
 		alignItems: 'center',
 		justifyContent: 'center',
+		padding: 7,
 	},
-	iconContainer: {
-		marginBottom: 13,
-		width: 50,
-		marginTop: 25,
-		padding: 10,
-		borderRadius: 25,
-		borderColor: '#509ce4',
+
+	mainButton: {
+		backgroundColor: colors.mainColor,
+		borderTopLeftRadius: 30,
+		borderBottomLeftRadius: 30,
+	},
+
+	secondaryButton: {
+		backgroundColor: '#e8e4ec',
+		borderTopRightRadius: 30,
+		borderBottomRightRadius: 30,
 	},
 });

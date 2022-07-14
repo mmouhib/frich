@@ -1,5 +1,6 @@
 import { View, StyleSheet } from 'react-native';
 import welcomeScreenData from '../../constants/welcomeData';
+import colors from '../../utils/colors';
 
 export default function DotsSlider({ selectedIndex }: { selectedIndex: number }) {
 	return (
@@ -8,13 +9,7 @@ export default function DotsSlider({ selectedIndex }: { selectedIndex: number })
 				return (
 					<View
 						key={index}
-						style={[
-							styles.dot,
-							selectedIndex == index && {
-								backgroundColor: '#509ce4',
-								width: 30,
-							},
-						]}
+						style={[styles.dot, selectedIndex == index && styles.selectedDot]}
 					></View>
 				);
 			})}
@@ -24,6 +19,7 @@ export default function DotsSlider({ selectedIndex }: { selectedIndex: number })
 
 const styles = StyleSheet.create({
 	container: {
+		marginBottom: 50,
 		flexDirection: 'row',
 		justifyContent: 'center',
 	},
@@ -34,5 +30,10 @@ const styles = StyleSheet.create({
 		borderRadius: 6 / 2,
 		marginHorizontal: 4,
 		backgroundColor: '#aaa',
+	},
+
+	selectedDot: {
+		width: 30,
+		backgroundColor: colors.mainColor,
 	},
 });

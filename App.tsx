@@ -81,7 +81,7 @@ export default function App() {
 			<View style={containerStyle} onLayout={_onLayout}>
 				<StatusBar />
 				<MatchContextComponent>
-					<stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="MatchType">
+					<stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Welcome">
 						{firstLaunch && <stack.Screen name="Welcome" component={Welcome} />}
 						<stack.Screen name="Login" component={Login} />
 						<stack.Screen name="Signup" component={Signup} />

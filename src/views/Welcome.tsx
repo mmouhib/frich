@@ -1,10 +1,11 @@
 import welcomeScreenData from '../constants/welcomeData';
-import { View, FlatList, ViewToken, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, FlatList, ViewToken, StyleSheet } from 'react-native';
 import { IHomeScreenData } from '../types/types';
 import WelcomeListItem from '../components/WelcomePage/WelcomeListItem';
 import { useState, useRef } from 'react';
 import DotsSlider from '../components/WelcomePage/DotsSlider';
 import SlidesNavigator from '../components/WelcomePage/SlidesNavigator';
+import FinalSliderFooter from '../components/WelcomePage/FinalSliderFooter';
 
 // todo: typedef navigation prop
 export default function Welcome({ navigation }: any) {
@@ -57,20 +58,14 @@ export default function Welcome({ navigation }: any) {
 
 			<View style={styles.footerContainer}>
 				<DotsSlider selectedIndex={currentPageIndex} />
-				<SlidesNavigator
-					currentPageIndex={currentPageIndex}
-					scrollToIndex={_scrollToIndex}
-					navigation={navigation}
-				/>
-				<TouchableOpacity>
-					<Text
-						onPress={() => {
-							navigation.navigate('Login');
-						}}
-					>
-						Skip
-					</Text>
-				</TouchableOpacity>
+				{currentPageIndex == WELCOME_DATA_LENGTH - 1 ? (
+					<FinalSliderFooter navigation={navigation} />
+				) : (
+					<SlidesNavigator
+						currentPageIndex={currentPageIndex}
+						scrollToIndex={_scrollToIndex}
+					/>
+				)}
 			</View>
 		</View>
 	);
