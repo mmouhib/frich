@@ -27,5 +27,3 @@ export const matchSettingsSlice = createSlice({
 });
 
 export const { alterMatchType, alterPlayersCount } = matchSettingsSlice.actions;
-
-export default matchSettingsSlice.reducer;

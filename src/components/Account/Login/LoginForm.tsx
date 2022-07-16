@@ -3,8 +3,12 @@ import CustomInput from '../../CustomComponents/CustomInput';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../../utils/colors';
 import { useState } from 'react';
+import { NavigationPropTypes } from '../../../types/types';
+import { useNavigation } from '@react-navigation/native';
 
-export default function LoginForm({ navigation }: any) {
+export default function LoginForm() {
+	const navigation = useNavigation<NavigationPropTypes['navigation']>();
+
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 

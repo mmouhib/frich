@@ -7,8 +7,12 @@ import DotsSlider from '../components/WelcomePage/DotsSlider';
 import SlidesNavigator from '../components/WelcomePage/SlidesNavigator';
 import FinalSliderFooter from '../components/WelcomePage/FinalSliderFooter';
 
-// todo: typedef navigation prop
-export default function Welcome({ navigation }: any) {
+/* navigation prop types:
+type PropTypes = NativeStackScreenProps<IStackParamList, 'Welcome'>;
+{ navigation }: { navigation: PropTypes['navigation'] }
+*/
+
+export default function Welcome() {
 	const WELCOME_DATA_LENGTH = welcomeScreenData.length;
 
 	const [currentPageIndex, setCurrentPageIndex] = useState<number>(0);
@@ -59,7 +63,7 @@ export default function Welcome({ navigation }: any) {
 			<View style={styles.footerContainer}>
 				<DotsSlider selectedIndex={currentPageIndex} />
 				{currentPageIndex == WELCOME_DATA_LENGTH - 1 ? (
-					<FinalSliderFooter navigation={navigation} />
+					<FinalSliderFooter />
 				) : (
 					<SlidesNavigator
 						currentPageIndex={currentPageIndex}

@@ -2,8 +2,9 @@ import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 import SignupHeader from '../../components/Account/Signup/SignupHeader';
 import SignupForm from '../../components/Account/Signup/SignupForm';
 import AccountFooter from '../../components/Account/AccountFooter';
+import { NavigationPropTypes } from '../../types/types';
 
-export default function Signup({ navigation }: any) {
+export default function Signup({ navigation }: { navigation: NavigationPropTypes['navigation'] }) {
 	return (
 		<KeyboardAvoidingView
 			behavior={'position'}

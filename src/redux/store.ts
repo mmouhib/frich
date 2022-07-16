@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import matchSettingsReduces from './features/matchSettingsSlice';
+import { matchSettingsSlice } from './features/matchSettingsSlice';
 
 export default configureStore({
 	reducer: {
-		matchSettings: matchSettingsReduces,
+		matchSettings: matchSettingsSlice.reducer,
 	},
 });

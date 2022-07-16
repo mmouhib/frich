@@ -1,6 +1,7 @@
 //this file contains all type definitions for the whole app
 
 import { ImageSourcePropType } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export interface IHomeScreenData {
 	id: number;
@@ -14,4 +15,15 @@ export interface IUseDimensions {
 	exactHeight: number;
 }
 
-export type inputTypes = 'number' | 'password' | 'email' | 'text';
+export type IStackParamList = {
+	Welcome: undefined;
+	Login: undefined;
+	Signup: undefined;
+	ForgotPassword: undefined;
+	ForgotPasswordEmailSent: undefined;
+	MatchType: undefined;
+	PlayersNumber: undefined;
+	MatchSettings: undefined;
+};
+
+export type NavigationPropTypes = NativeStackScreenProps<IStackParamList, any>;

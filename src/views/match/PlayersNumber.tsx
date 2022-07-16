@@ -5,8 +5,13 @@ import colors from '../../utils/colors';
 import { AntDesign } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { alterPlayersCount } from '../../redux/features/matchSettingsSlice';
+import { NavigationPropTypes } from '../../types/types';
 
-export default function PlayersNumber({ navigation }: any) {
+export default function PlayersNumber({
+	navigation,
+}: {
+	navigation: NavigationPropTypes['navigation'];
+}) {
 	const [selections, setSelections] = useState<boolean[]>([false, false, false]);
 	const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
 

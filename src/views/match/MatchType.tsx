@@ -5,8 +5,13 @@ import { useEffect, useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { alterMatchType } from '../../redux/features/matchSettingsSlice';
+import { NavigationPropTypes } from '../../types/types';
 
-export default function MatchType({ navigation }: any) {
+export default function MatchType({
+	navigation,
+}: {
+	navigation: NavigationPropTypes['navigation'];
+}) {
 	//const matchSettings = useSelector((state: any) => state.matchSettings.value);
 	const dispatch = useDispatch();
 

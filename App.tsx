@@ -20,6 +20,8 @@ import { Mukta_500Medium, Mukta_600SemiBold } from '@expo-google-fonts/mukta';
 import PlayersNumber from './src/views/match/PlayersNumber';
 import { Provider } from 'react-redux';
 import store from './src/redux/store';
+import MatchSettings from './src/views/match/MatchSettings';
+import { IStackParamList } from './src/types/types';
 
 /*
  * import Constants from 'expo-constants';
@@ -28,7 +30,7 @@ import store from './src/redux/store';
  * marginTop: Constants.statusBarHeight - Constants.statusBarHeight * 0.2,
  * */
 
-const stack = createNativeStackNavigator();
+const stack = createNativeStackNavigator<IStackParamList>();
 
 export default function App() {
 	const { exactHeight, exactWidth } = useDimensions();
@@ -75,6 +77,8 @@ export default function App() {
 		if (isReady) SplashScreen.hideAsync();
 	};
 
+	const screenOptions = { headerShown: false };
+
 	if (!isReady) return null;
 
 	return (
@@ -82,17 +86,22 @@ export default function App() {
 			<View style={containerStyle} onLayout={_onLayout}>
 				<StatusBar />
 				<Provider store={store}>
-					<stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="MatchType">
+					<stack.Navigator screenOptions={screenOptions} initialRouteName="Welcome">
 						{firstLaunch && <stack.Screen name="Welcome" component={Welcome} />}
-						<stack.Screen name="Login" component={Login} />
-						<stack.Screen name="Signup" component={Signup} />
-						<stack.Screen name="ForgotPassword" component={ForgotPassword} />
-						<stack.Screen
-							name="ForgotPasswordEmailSent"
-							component={ForgotPasswordEmailSent}
-						/>
-						<stack.Screen name="MatchType" component={MatchType} />
-						<stack.Screen name="PlayersNumber" component={PlayersNumber} />
+						<stack.Group>
+							<stack.Screen name="Login" component={Login} />
+							<stack.Screen name="Signup" component={Signup} />
+							<stack.Screen name="ForgotPassword" component={ForgotPassword} />
+							<stack.Screen
+								name="ForgotPasswordEmailSent"
+								component={ForgotPasswordEmailSent}
+							/>
+						</stack.Group>
+						<stack.Group>
+							<stack.Screen name="MatchType" component={MatchType} />
+							<stack.Screen name="PlayersNumber" component={PlayersNumber} />
+							<stack.Screen name="MatchSettings" component={MatchSettings} />
+						</stack.Group>
 					</stack.Navigator>
 				</Provider>
 			</View>

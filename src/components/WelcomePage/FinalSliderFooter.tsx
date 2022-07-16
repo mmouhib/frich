@@ -1,15 +1,21 @@
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import colors from '../../utils/colors';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { IStackParamList } from '../../types/types';
 
-export default function FinalSliderFooter({ navigation }: { navigation: any }) {
+type PropTypes = NativeStackScreenProps<IStackParamList, 'Welcome'>;
+
+export default function FinalSliderFooter() {
+	const navigation = useNavigation<PropTypes['navigation']>();
+
+	const _onPress = (): void => {
+		navigation.navigate('Login');
+	};
+
 	return (
 		<View>
-			<TouchableOpacity
-				onPress={() => {
-					navigation.navigate('Login');
-				}}
-				style={styles.button}
-			>
+			<TouchableOpacity onPress={_onPress} style={styles.button}>
 				<Text style={{ color: '#fff' }}>Proceed to account</Text>
 			</TouchableOpacity>
 		</View>

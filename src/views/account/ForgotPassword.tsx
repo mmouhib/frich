@@ -1,11 +1,15 @@
-import { StyleSheet, KeyboardAvoidingView, Image, View, Text } from 'react-native';
+import { StyleSheet, Image, View, Text } from 'react-native';
 import CustomInput from '../../components/CustomComponents/CustomInput';
 import { useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Roboto_700Bold } from '@expo-google-fonts/roboto';
 import AccountFooter from '../../components/Account/AccountFooter';
+import { NavigationPropTypes } from '../../types/types';
 
-export default function ForgotPassword({ navigation }: any) {
+export default function ForgotPassword({
+	navigation,
+}: {
+	navigation: NavigationPropTypes['navigation'];
+}) {
 	const [email, setEmail] = useState<string>('');
 
 	return (

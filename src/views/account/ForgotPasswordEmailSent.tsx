@@ -2,8 +2,13 @@ import { Image, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import AccountFooter from '../../components/Account/AccountFooter';
 import * as Linking from 'expo-linking';
 import colors from '../../utils/colors';
+import { NavigationPropTypes } from '../../types/types';
 
-export default function ForgotPasswordEmailSent({ navigation }: any) {
+export default function ForgotPasswordEmailSent({
+	navigation,
+}: {
+	navigation: NavigationPropTypes['navigation'];
+}) {
 	return (
 		<View style={{ flex: 1, alignItems: 'center' }}>
 			<View style={{ flex: 2, width: '100%' }}>

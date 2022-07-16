@@ -2,8 +2,9 @@ import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 import LoginHeader from '../../components/Account/Login/LoginHeader';
 import AccountFooter from '../../components/Account/AccountFooter';
 import LoginForm from '../../components/Account/Login/LoginForm';
+import { NavigationPropTypes } from '../../types/types';
 
-export default function Login({ navigation }: any) {
+export default function Login({ navigation }: { navigation: NavigationPropTypes['navigation'] }) {
 	return (
 		<KeyboardAvoidingView
 			behavior={'position'}
@@ -11,7 +12,7 @@ export default function Login({ navigation }: any) {
 			contentContainerStyle={styles.containerStyleForPosition}
 		>
 			<LoginHeader />
-			<LoginForm navigation={navigation} />
+			<LoginForm />
 			<AccountFooter
 				mainButtonText="Log In"
 				secondaryButtonText="Dont have an account ? Create one"
