@@ -1,19 +1,21 @@
 import { View, StyleSheet, Text, Pressable } from 'react-native';
 import colors from '../../utils/colors';
 import TypeSelection from '../../components/CustomComponents/TypeSelection';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
-import { matchContext as _matchContext } from '../../context/match/MatchContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { alterMatchType } from '../../redux/features/matchSettingsSlice';
 
 export default function MatchType({ navigation }: any) {
+	//const matchSettings = useSelector((state: any) => state.matchSettings.value);
+	const dispatch = useDispatch();
+
 	const [selections, setSelections] = useState<boolean[]>([false, false]);
 	const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
 
-	const matchContext = useContext(_matchContext);
-
 	useEffect(() => {
-		//set the context value to the correct index of selected option
-		matchContext?.setMatchType(selections.indexOf(true) + 1);
+		//set the value of the matchType redux value to the index+1 of selected option
+		dispatch(alterMatchType(selections.indexOf(true) + 1));
 		//make button active after selecting an option
 		selections.includes(true) ? setButtonDisabled(false) : setButtonDisabled(true);
 	}, [selections]);
@@ -93,5 +95,3 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 });
-
-//29432635

@@ -18,7 +18,8 @@ import MatchType from './src/views/match/MatchType';
 import { Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import { Mukta_500Medium, Mukta_600SemiBold } from '@expo-google-fonts/mukta';
 import PlayersNumber from './src/views/match/PlayersNumber';
-import MatchContextComponent from './src/context/match/MatchContext';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
 
 /*
  * import Constants from 'expo-constants';
@@ -80,8 +81,8 @@ export default function App() {
 		<NavigationContainer>
 			<View style={containerStyle} onLayout={_onLayout}>
 				<StatusBar />
-				<MatchContextComponent>
-					<stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Welcome">
+				<Provider store={store}>
+					<stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="MatchType">
 						{firstLaunch && <stack.Screen name="Welcome" component={Welcome} />}
 						<stack.Screen name="Login" component={Login} />
 						<stack.Screen name="Signup" component={Signup} />
@@ -93,7 +94,7 @@ export default function App() {
 						<stack.Screen name="MatchType" component={MatchType} />
 						<stack.Screen name="PlayersNumber" component={PlayersNumber} />
 					</stack.Navigator>
-				</MatchContextComponent>
+				</Provider>
 			</View>
 		</NavigationContainer>
 	);

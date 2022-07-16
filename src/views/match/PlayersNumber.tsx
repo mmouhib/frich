@@ -1,19 +1,21 @@
 import { View, StyleSheet, Text, Pressable } from 'react-native';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import TypeSelection from '../../components/CustomComponents/TypeSelection';
 import colors from '../../utils/colors';
 import { AntDesign } from '@expo/vector-icons';
-import { matchContext as _matchContext } from '../../context/match/MatchContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { alterPlayersCount } from '../../redux/features/matchSettingsSlice';
 
 export default function PlayersNumber({ navigation }: any) {
 	const [selections, setSelections] = useState<boolean[]>([false, false, false]);
 	const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
 
-	const matchContext = useContext(_matchContext);
+	//const matchSettings = useSelector((state: any) => state.matchSettings.value);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		//set the context value to the correct index of selected option
-		matchContext?.setPlayerCount(selections.indexOf(true) + 1);
+		//set the playersCount redux value to the correct index of selected option
+		dispatch(alterPlayersCount(selections.indexOf(true) + 1));
 		//make button active after selecting an option
 		selections.includes(true) ? setButtonDisabled(false) : setButtonDisabled(true);
 	}, [selections]);
