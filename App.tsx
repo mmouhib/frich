@@ -20,15 +20,8 @@ import { Mukta_500Medium, Mukta_600SemiBold } from '@expo-google-fonts/mukta';
 import PlayersNumber from './src/views/match/PlayersNumber';
 import { Provider } from 'react-redux';
 import store from './src/redux/store';
-import MatchSettings from './src/views/match/MatchSettings';
+import PlayersNameSelection from './src/views/match/PlayersNameSelection';
 import { IStackParamList } from './src/types/types';
-
-/*
- * import Constants from 'expo-constants';
- * import { StatusBar } from 'expo-status-bar';
- * <StatusBar style="dark" backgroundColor={colors.lightGlass} />
- * marginTop: Constants.statusBarHeight - Constants.statusBarHeight * 0.2,
- * */
 
 const stack = createNativeStackNavigator<IStackParamList>();
 
@@ -86,7 +79,7 @@ export default function App() {
 			<View style={containerStyle} onLayout={_onLayout}>
 				<StatusBar />
 				<Provider store={store}>
-					<stack.Navigator screenOptions={screenOptions} initialRouteName="Welcome">
+					<stack.Navigator screenOptions={screenOptions} initialRouteName="MatchType">
 						{firstLaunch && <stack.Screen name="Welcome" component={Welcome} />}
 						<stack.Group>
 							<stack.Screen name="Login" component={Login} />
@@ -100,7 +93,7 @@ export default function App() {
 						<stack.Group>
 							<stack.Screen name="MatchType" component={MatchType} />
 							<stack.Screen name="PlayersNumber" component={PlayersNumber} />
-							<stack.Screen name="MatchSettings" component={MatchSettings} />
+							<stack.Screen name="PlayersNameSelection" component={PlayersNameSelection} />
 						</stack.Group>
 					</stack.Navigator>
 				</Provider>

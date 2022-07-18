@@ -2,10 +2,10 @@ import { View, StyleSheet, Text, Pressable } from 'react-native';
 import { useEffect, useState } from 'react';
 import TypeSelection from '../../components/CustomComponents/TypeSelection';
 import colors from '../../utils/colors';
-import { AntDesign } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { alterPlayersCount } from '../../redux/features/matchSettingsSlice';
 import { NavigationPropTypes } from '../../types/types';
+import ProceedButton from '../../components/Account/ProceedButton';
 
 export default function PlayersNumber({
 	navigation,
@@ -19,8 +19,14 @@ export default function PlayersNumber({
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		//set the playersCount redux value to the correct index of selected option
-		dispatch(alterPlayersCount(selections.indexOf(true) + 1));
+		/**
+		 * set the playersCount redux value to the correct index of selected option:
+		 * here we add 2 to the value because:
+		 * 1 for because the array index starts with 0
+		 * and the other 1 is because the player count starts with 1 not 0
+		 * because we took consideration of the host who is the first player
+		 * */
+		dispatch(alterPlayersCount(selections.indexOf(true) + 2));
 		//make button active after selecting an option
 		selections.includes(true) ? setButtonDisabled(false) : setButtonDisabled(true);
 	}, [selections]);
@@ -59,23 +65,14 @@ export default function PlayersNumber({
 						setSelections([false, false, true]);
 					}}
 				/>
-
-				<Pressable
-					pointerEvents={buttonDisabled ? 'none' : 'auto'}
-					style={[
-						styles.button,
-						{ backgroundColor: buttonDisabled ? '#bbbbbb' : colors.mainColor },
-					]}
-					android_ripple={{ color: colors.rippleColor }}
-					onPress={() => {
-						navigation.navigate('MatchType');
-					}}
-				>
-					<Text style={{ color: '#fff', fontFamily: 'Roboto_700Bold', marginRight: 10 }}>
-						Proceed
-					</Text>
-					<AntDesign name="arrowright" size={20} color="#fff" />
-				</Pressable>
+				<View style={{ width: '85%' }}>
+					<ProceedButton
+						buttonDisabled={buttonDisabled}
+						onPress={() => {
+							navigation.navigate('PlayersNameSelection');
+						}}
+					/>
+				</View>
 			</View>
 		</View>
 	);
@@ -98,15 +95,5 @@ const styles = StyleSheet.create({
 	text: {
 		color: '#a1a1a1',
 		fontFamily: 'Mukta_500Medium',
-	},
-
-	button: {
-		marginTop: 10,
-		width: '85%',
-		height: 45,
-		borderRadius: 7,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'center',
 	},
 });

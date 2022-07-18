@@ -6,6 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { alterMatchType } from '../../redux/features/matchSettingsSlice';
 import { NavigationPropTypes } from '../../types/types';
+import ProceedButton from '../../components/Account/ProceedButton';
 
 export default function MatchType({
 	navigation,
@@ -50,22 +51,14 @@ export default function MatchType({
 					}}
 				/>
 
-				<Pressable
-					pointerEvents={buttonDisabled ? 'none' : 'auto'}
-					style={[
-						styles.button,
-						{ backgroundColor: buttonDisabled ? '#bbbbbb' : colors.mainColor },
-					]}
-					android_ripple={{ color: colors.rippleColor }}
-					onPress={() => {
-						navigation.navigate('PlayersNumber');
-					}}
-				>
-					<Text style={{ color: '#fff', fontFamily: 'Roboto_700Bold', marginRight: 10 }}>
-						Proceed
-					</Text>
-					<AntDesign name="arrowright" size={20} color="#fff" />
-				</Pressable>
+				<View style={{ width: '85%' }}>
+					<ProceedButton
+						buttonDisabled={buttonDisabled}
+						onPress={() => {
+							navigation.navigate('PlayersNumber');
+						}}
+					/>
+				</View>
 			</View>
 		</View>
 	);
@@ -88,15 +81,5 @@ const styles = StyleSheet.create({
 	text: {
 		color: '#a1a1a1',
 		fontFamily: 'Mukta_500Medium',
-	},
-
-	button: {
-		marginTop: 10,
-		width: '85%',
-		height: 45,
-		borderRadius: 7,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'center',
 	},
 });

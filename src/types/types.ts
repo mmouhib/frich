@@ -23,7 +23,12 @@ export type IStackParamList = {
 	ForgotPasswordEmailSent: undefined;
 	MatchType: undefined;
 	PlayersNumber: undefined;
-	MatchSettings: undefined;
+	PlayersNameSelection: undefined;
 };
 
 export type NavigationPropTypes = NativeStackScreenProps<IStackParamList, any>;
+
+export interface IPlayerNameStruct {
+	key: number;
+	value: string;
+}
