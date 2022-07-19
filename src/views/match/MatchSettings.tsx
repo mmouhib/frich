@@ -1,50 +1,75 @@
-import { Text, View, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { Text, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { alterscoringRules } from '../../redux/features/matchSettingsSlice';
 import colors from '../../utils/colors';
 import { useState } from 'react';
 import SettingsBox from '../../components/MatchSection/SettingsBox';
+import { IScoring, IStackParamList } from '../../types/types';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+
+type navigationType = NativeStackScreenProps<IStackParamList, 'MatchSettings'>['navigation'];
 
 export default function MatchSettings(): JSX.Element {
 	const scoringRules = useSelector((state: any) => state.matchSettings.value.scoringRules);
 	const dispatch = useDispatch();
+	const navigation = useNavigation<navigationType>();
 
 	const [kabbout, setKabbout] = useState<number>(scoringRules.kabbout);
 	const [jokeFiyeddek, setJokeFiyeddek] = useState<number>(scoringRules.jokerFiYeddek);
 	const [jokeMfadhel, setJokeMfadhel] = useState<number>(scoringRules.jokerMfadhel);
 	const [place, setPlace] = useState<number>(scoringRules.place);
 
-	//todo: add save button and sync the values with redux when pressing it.
-	//todo: fix 'KeyboardAvoidingView' layout
+	const matchSettingsSync = (): void => {
+		dispatch(
+			alterscoringRules({
+				kabbout: kabbout,
+				jokerFiYeddek: jokeFiyeddek,
+				jokerMfadhel: jokeMfadhel,
+				place: place,
+			} as IScoring)
+		);
+
+		navigation.navigate('Login');
+	};
 
 	return (
-		<KeyboardAvoidingView style={{ flex: 1 }} behavior="height">
+		<KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
 			<View style={styles.container}>
-				<View style={{ marginLeft: 10, width: '85%' }}>
-					<Text style={styles.headingTextTitle}>Change match scoring</Text>
+				<View>
+					<View style={{ marginLeft: 10, width: '85%' }}>
+						<Text style={styles.headingTextTitle}>Change match scoring</Text>
+					</View>
+					<Text style={styles.headingTextContent}>
+						Edit how you want the scoring to be to fit your pereferences.
+					</Text>
 				</View>
-				<Text style={styles.headingTextContent}>
-					Edit how you want the scoring to be to fit your pereferences.
-				</Text>
 
-				<SettingsBox
-					label="kabbout"
-					settingValue={kabbout}
-					setValue={setKabbout}
-					increaseBy={5}
-				/>
-				<SettingsBox
-					label="Joker fi yedek"
-					settingValue={jokeFiyeddek}
-					setValue={setJokeFiyeddek}
-					increaseBy={5}
-				/>
-				<SettingsBox
-					label="Joker mfadhel"
-					settingValue={jokeMfadhel}
-					setValue={setJokeMfadhel}
-					increaseBy={5}
-				/>
-				<SettingsBox label="place" settingValue={place} setValue={setPlace} increaseBy={5} />
+				<View>
+					<SettingsBox
+						label="Kabbout"
+						settingValue={kabbout}
+						setValue={setKabbout}
+						increaseBy={50}
+					/>
+					<SettingsBox
+						label="Joker fi yedek"
+						settingValue={jokeFiyeddek}
+						setValue={setJokeFiyeddek}
+						increaseBy={5}
+					/>
+					<SettingsBox
+						label="Joker mfadhel"
+						settingValue={jokeMfadhel}
+						setValue={setJokeMfadhel}
+						increaseBy={5}
+					/>
+					<SettingsBox label="Place" settingValue={place} setValue={setPlace} increaseBy={5} />
+				</View>
+
+				<TouchableOpacity style={styles.matchSettingsFooter} onPress={matchSettingsSync}>
+					<Text style={{ color: colors.mainColor, fontWeight: 'bold' }}>Save</Text>
+				</TouchableOpacity>
 			</View>
 		</KeyboardAvoidingView>
 	);
@@ -67,5 +92,11 @@ const styles = StyleSheet.create({
 	headingTextContent: {
 		fontWeight: '500',
 		fontSize: 14,
+	},
+
+	matchSettingsFooter: {
+		marginTop: 50,
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 });

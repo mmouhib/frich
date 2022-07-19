@@ -35,6 +35,7 @@ export default function SettingsBox({
 					<TextInput
 						value={settingValue.toString()}
 						keyboardType="number-pad"
+						style={styles.inputStyle}
 						onChangeText={(newValue: string) => {
 							digitsOnlyRegEx.test(newValue) ? setValue(parseInt(newValue)) : setValue(0);
 						}}
@@ -79,5 +80,10 @@ const styles = StyleSheet.create({
 	valueContainer: {
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+
+	inputStyle: {
+		color: colors.mainColor,
+		fontWeight: 'bold',
 	},
 });

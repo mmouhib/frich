@@ -1,18 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IPlayerNameStruct } from '../../types/types';
+import { IPlayerNameStruct, IScoring } from '../../types/types';
 
 interface IInitialState {
 	matchType: number;
 	playersCount: number;
 	playersNames: IPlayerNameStruct[];
 	scoringRules: IScoring;
-}
-
-interface IScoring {
-	kabbout: number;
-	jokerFiYeddek: number;
-	jokerMfadhel: number;
-	place: number;
 }
 
 export const matchSettingsSlice = createSlice({

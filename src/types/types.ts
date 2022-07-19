@@ -33,3 +33,10 @@ export interface IPlayerNameStruct {
 	key: number;
 	value: string;
 }
+
+export interface IScoring {
+	kabbout: number;
+	jokerFiYeddek: number;
+	jokerMfadhel: number;
+	place: number;
+}
