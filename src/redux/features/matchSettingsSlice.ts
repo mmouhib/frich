@@ -5,6 +5,14 @@ interface IInitialState {
 	matchType: number;
 	playersCount: number;
 	playersNames: IPlayerNameStruct[];
+	scoringRules: IScoring;
+}
+
+interface IScoring {
+	kabbout: number;
+	jokerFiYeddek: number;
+	jokerMfadhel: number;
+	place: number;
 }
 
 export const matchSettingsSlice = createSlice({
@@ -15,6 +23,12 @@ export const matchSettingsSlice = createSlice({
 			matchType: 0,
 			playersCount: 0,
 			playersNames: [],
+			scoringRules: {
+				kabbout: 100,
+				jokerFiYeddek: 10,
+				jokerMfadhel: 25,
+				place: 25,
+			} as IScoring,
 		} as IInitialState,
 	},
 
@@ -36,7 +50,12 @@ export const matchSettingsSlice = createSlice({
 		) => {
 			state.value.playersNames = action.payload;
 		},
+
+		alterscoringRules: (state: any, action: PayloadAction<IScoring>) => {
+			state.value.scoringRules = action.payload;
+		},
 	},
 });
 
-export const { alterMatchType, alterPlayersCount, alterPlayersNames } = matchSettingsSlice.actions;
+export const { alterMatchType, alterPlayersCount, alterPlayersNames, alterscoringRules } =
+	matchSettingsSlice.actions;

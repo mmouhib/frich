@@ -24,6 +24,7 @@ export type IStackParamList = {
 	MatchType: undefined;
 	PlayersNumber: undefined;
 	PlayersNameSelection: undefined;
+	MatchSettings: undefined;
 };
 
 export type NavigationPropTypes = NativeStackScreenProps<IStackParamList, any>;

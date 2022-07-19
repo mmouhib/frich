@@ -92,7 +92,7 @@ export default function PlayersNameSelection({ navigation }: IPlayersNamesSelect
 					onPress={() => {
 						if (validArray(playersCount, playersNames)) {
 							dispatch(alterPlayersNames(playersNames));
-							navigation.navigate('PlayersNumber');
+							navigation.navigate('MatchSettings');
 						}
 						// todo: display error messages when the validArray is false
 					}}
