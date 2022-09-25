@@ -42,7 +42,7 @@ export default function ForgotPassword({
 				mainButtonText="Reset password"
 				secondaryButtonText="Remember password? Login"
 				mainButtonFunction={() => {
-					navigation.navigate('ForgotPasswordEmailSent');
+					navigation.navigate('PasswordResetEmail');
 				}}
 				navigationFunction={() => {
 					navigation.navigate('Login');

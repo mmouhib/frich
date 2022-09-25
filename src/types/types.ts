@@ -20,7 +20,7 @@ export type IStackParamList = {
 	Login: undefined;
 	Signup: undefined;
 	ForgotPassword: undefined;
-	ForgotPasswordEmailSent: undefined;
+	PasswordResetEmail: undefined;
 	MatchType: undefined;
 	PlayersNumber: undefined;
 	PlayersNameSelection: undefined;

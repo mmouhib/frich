@@ -4,7 +4,7 @@ import * as Linking from 'expo-linking';
 import colors from '../../utils/colors';
 import { NavigationPropTypes } from '../../types/types';
 
-export default function ForgotPasswordEmailSent({
+export default function PasswordResetEmail({
 	navigation,
 }: {
 	navigation: NavigationPropTypes['navigation'];
@@ -18,7 +18,7 @@ export default function ForgotPasswordEmailSent({
 					resizeMode="contain"
 				/>
 			</View>
-			<View style={{ flex: 1, width: '85%' }}>
+			<View style={{ flex: 0.5, width: '85%' }}>
 				<Text style={styles.headingText}>Email has been sent!</Text>
 				<Text style={styles.text}>
 					Please check your inbox and follow the instructions in order to reset your password
@@ -34,6 +34,7 @@ export default function ForgotPasswordEmailSent({
 					}}
 				/>
 				<TouchableOpacity
+					style={{ flex: 1 }}
 					onPress={() => {
 						navigation.navigate('Login');
 					}}
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
 	},
 
 	rememberPasswordText: {
-		marginBottom: 20,
+		marginTop: 30,
 		fontWeight: '500',
 		color: colors.mainColor,
 	},

@@ -11,7 +11,7 @@ import { Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ForgotPassword from './src/views/account/ForgotPassword';
-import ForgotPasswordEmailSent from './src/views/account/ForgotPasswordEmailSent';
+import PasswordResetEmail from './src/views/account/PasswordResetEmail';
 import { StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MatchType from './src/views/match/MatchType';
@@ -67,29 +67,27 @@ export default function App() {
 		backgroundColor: colors.lightGlass,
 	};
 
-	const _onLayout = () => {
-		if (isReady) SplashScreen.hideAsync();
-	};
-
 	const screenOptions = { headerShown: false };
 
 	if (!isReady) return null;
 
 	return (
 		<NavigationContainer>
-			<View style={containerStyle} onLayout={_onLayout}>
+			<View
+				style={containerStyle}
+				onLayout={() => {
+					if (isReady) SplashScreen.hideAsync();
+				}}
+			>
 				<StatusBar />
 				<Provider store={store}>
-					<stack.Navigator screenOptions={screenOptions} initialRouteName="MatchSettings">
+					<stack.Navigator screenOptions={screenOptions} initialRouteName="Login">
 						{firstLaunch && <stack.Screen name="Welcome" component={Welcome} />}
 						<stack.Group>
 							<stack.Screen name="Login" component={Login} />
 							<stack.Screen name="Signup" component={Signup} />
 							<stack.Screen name="ForgotPassword" component={ForgotPassword} />
-							<stack.Screen
-								name="ForgotPasswordEmailSent"
-								component={ForgotPasswordEmailSent}
-							/>
+							<stack.Screen name="PasswordResetEmail" component={PasswordResetEmail} />
 						</stack.Group>
 						<stack.Group>
 							<stack.Screen name="MatchType" component={MatchType} />
