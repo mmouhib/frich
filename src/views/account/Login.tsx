@@ -16,6 +16,9 @@ export default function Login({ navigation }: { navigation: NavigationPropTypes[
 			<AccountFooter
 				mainButtonText="Log In"
 				secondaryButtonText="Dont have an account ? Create one"
+				mainButtonFunction={() => {
+					navigation.navigate('PlayersNumber');
+				}}
 				navigationFunction={() => {
 					navigation.navigate('Signup');
 				}}
