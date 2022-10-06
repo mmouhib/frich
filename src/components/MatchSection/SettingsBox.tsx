@@ -53,10 +53,11 @@ export default function SettingsBox({
 const styles = StyleSheet.create({
 	SettingsBoxContainer: {
 		width: '100%',
-		backgroundColor: '#fff',
+		borderWidth: 1,
+		borderColor: '#d4cdcd',
 		height: 60,
 		marginTop: 60,
-		borderRadius: 7,
+		borderRadius: 6,
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
@@ -73,8 +74,8 @@ const styles = StyleSheet.create({
 		width: 35,
 		alignItems: 'center',
 		justifyContent: 'center',
-		backgroundColor: '#e7e7e7ba',
-		borderRadius: 100,
+		backgroundColor: '#ebeff3b9',
+		borderRadius: 11,
 	},
 
 	valueContainer: {

@@ -105,7 +105,7 @@ export default function PlayersNameSelection({ navigation }: IPlayersNamesSelect
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#fcfeff',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
@@ -122,12 +122,14 @@ const styles = StyleSheet.create({
 	},
 
 	input: {
-		height: 40,
+		height: 60,
 		padding: 10,
 		borderWidth: 1,
 		borderRadius: 4,
 		borderColor: 'transparent',
 		backgroundColor: colors.lightGlass,
+		fontWeight: 'bold',
+		fontSize: 22,
 	},
 
 	inputLabel: {

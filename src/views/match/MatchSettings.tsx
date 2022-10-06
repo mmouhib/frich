@@ -68,7 +68,9 @@ export default function MatchSettings(): JSX.Element {
 				</View>
 
 				<TouchableOpacity style={styles.matchSettingsFooter} onPress={matchSettingsSync}>
-					<Text style={{ color: colors.mainColor, fontWeight: 'bold' }}>Save</Text>
+					<View style={styles.saveButton}>
+						<Text style={styles.buttonText}>Save</Text>
+					</View>
 				</TouchableOpacity>
 			</View>
 		</KeyboardAvoidingView>
@@ -77,6 +79,7 @@ export default function MatchSettings(): JSX.Element {
 
 const styles = StyleSheet.create({
 	container: {
+		backgroundColor: '#fff',
 		flex: 1,
 		paddingHorizontal: 20,
 		justifyContent: 'center',
@@ -98,5 +101,19 @@ const styles = StyleSheet.create({
 		marginTop: 50,
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+
+	saveButton: {
+		padding: 10,
+		width: '100%',
+		borderRadius: 5,
+		alignItems: 'center',
+		backgroundColor: colors.mainColor,
+	},
+
+	buttonText: {
+		color: '#fff',
+		fontWeight: 'bold',
+		fontSize: 15,
 	},
 });
