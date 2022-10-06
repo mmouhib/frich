@@ -40,9 +40,11 @@ export default function MatchSettings(): JSX.Element {
 					<View style={{ marginLeft: 10, width: '85%' }}>
 						<Text style={styles.headingTextTitle}>Change match scoring</Text>
 					</View>
-					<Text style={styles.headingTextContent}>
-						Edit how you want the scoring to be to fit your pereferences.
-					</Text>
+					<View style={{ marginLeft: 10, width: '85%' }}>
+						<Text style={styles.headingTextContent}>
+							Edit how you want the score to be calculated in order to fit your pereferences.
+						</Text>
+					</View>
 				</View>
 
 				<View>

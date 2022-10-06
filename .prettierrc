@@ -1,18 +1,5 @@
 {
 	"trailingComma": "es5",
-	"tabWidth": 2,
-	"semi": true,
-	"useTabs": false,
-	"singleQuote": true,
-	"jsxBracketSameLine": false,
-	"printWidth": 100
-}
-
-
-/*
-//old
-{
-	"trailingComma": "es5",
 	"tabWidth": 3,
 	"semi": true,
 	"useTabs": true,
@@ -20,4 +7,3 @@
 	"jsxBracketSameLine": false,
 	"printWidth": 100
 }
-*/
