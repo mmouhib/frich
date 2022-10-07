@@ -23,6 +23,7 @@ import store from './src/redux/store';
 import PlayersNameSelection from './src/views/match/PlayersNameSelection';
 import { IStackParamList } from './src/types/types';
 import MatchSettings from './src/views/match/MatchSettings';
+import MatchesList from './src/views/match/MatchesList';
 
 const stack = createNativeStackNavigator<IStackParamList>();
 
@@ -81,7 +82,7 @@ export default function App() {
 			>
 				<StatusBar />
 				<Provider store={store}>
-					<stack.Navigator screenOptions={screenOptions} initialRouteName="Login">
+					<stack.Navigator screenOptions={screenOptions} initialRouteName="MatchesList">
 						{firstLaunch && <stack.Screen name="Welcome" component={Welcome} />}
 						<stack.Group>
 							<stack.Screen name="Login" component={Login} />
@@ -94,6 +95,7 @@ export default function App() {
 							<stack.Screen name="PlayersNumber" component={PlayersNumber} />
 							<stack.Screen name="PlayersNameSelection" component={PlayersNameSelection} />
 							<stack.Screen name="MatchSettings" component={MatchSettings} />
+							<stack.Screen name="MatchesList" component={MatchesList} />
 						</stack.Group>
 					</stack.Navigator>
 				</Provider>
