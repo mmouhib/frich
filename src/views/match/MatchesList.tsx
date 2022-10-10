@@ -5,11 +5,8 @@ import colors from '../../utils/colors';
 export default function MatchesList() {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.titleText}>match history</Text>
-			<MatchScreenBox matchType="Zwez" matchDate="11/3/2022" duration="24 minutes" won={true} />
-			<MatchScreenBox matchType="Zwez" matchDate="11/3/2022" duration="24 minutes" won={false} />
-			<MatchScreenBox matchType="Zwez" matchDate="11/3/2022" duration="1 Hour" won={true} />
-			<MatchScreenBox matchType="Zwez" matchDate="11/3/2022" duration="24 minutes" won={true} />
+			{/* <Text style={styles.titleText}>match history</Text> */}
+			{/* <MatchScreenBox matchType="Zwez" matchDate="11/3/2022" duration="24 minutes" won={true} /> */}
 			<MatchScreenBox matchType="Zwez" matchDate="11/3/2022" duration="24 minutes" won={false} />
 		</View>
 	);
@@ -20,7 +17,9 @@ const styles = StyleSheet.create({
 		backgroundColor: '#ffffff',
 		flex: 1,
 		alignItems: 'center',
-		paddingTop: 25,
+		// paddingTop: 25,
+
+		paddingTop: 300,
 	},
 
 	titleText: {

@@ -10,22 +10,23 @@ interface MatchScreenBoxProps {
 
 export default function MatchScreenBox(props: MatchScreenBoxProps) {
 	return (
-		<TouchableOpacity
-			activeOpacity={0.8}
-			style={[styles.container, { backgroundColor: props.won ? '#3563cd' : '#f55a70' }]}
-		>
-			<View style={[styles.MatchType]}>
-				<Text style={{ fontWeight: 'bold' }}>{props.matchType}</Text>
+		<TouchableOpacity activeOpacity={0.7} style={styles.container}>
+			<View style={styles.MatchType}>
+				<Text style={styles.matchTypeText}>{props.matchType}</Text>
 			</View>
 			<View style={styles.matchDate}>
-				<Text style={{ color: '#fff' }}>{props.matchDate}</Text>
+				<Text style={{ color: '#7f7e7e' }}>Date: </Text>
+				<Text>{props.matchDate}</Text>
 			</View>
 			<View style={{ paddingHorizontal: 20 }}>
-				<Text style={{ color: '#fff' }}>{props.duration}</Text>
+				<Text>
+					<Text style={{ color: '#7f7e7e' }}>Duration: </Text>
+					<Text>{props.duration}</Text>
+				</Text>
 			</View>
 			<View style={styles.seeDetailsContainer}>
 				<Text style={styles.seeDetailsText}>See details</Text>
-				<AntDesign name="rightcircle" size={18} color="white" />
+				<AntDesign name="rightcircle" size={18} color="red" />
 			</View>
 		</TouchableOpacity>
 	);
@@ -33,34 +34,45 @@ export default function MatchScreenBox(props: MatchScreenBoxProps) {
 
 const styles = StyleSheet.create({
 	container: {
-		marginVertical: 10,
-		padding: 8,
-		paddingBottom: 12,
 		width: '80%',
-		borderRadius: 5,
+		borderRadius: 7,
+		backgroundColor: '#fff',
+		elevation: 20,
+		paddingTop: 10,
 	},
 
 	MatchType: {
-		backgroundColor: '#fff',
 		padding: 7,
+		margin: 13,
 		width: 60,
 		borderRadius: 3,
 		alignItems: 'center',
+		backgroundColor: 'red',
+	},
+
+	matchTypeText: {
+		color: '#fff',
+		fontWeight: 'bold',
 	},
 
 	matchDate: {
 		paddingHorizontal: 20,
-		alignItems: 'flex-end',
+		justifyContent: 'flex-end',
+		flexDirection: 'row',
 	},
 
 	seeDetailsContainer: {
+		backgroundColor: '#f6f6f8',
 		flexDirection: 'row',
 		paddingHorizontal: 20,
 		justifyContent: 'flex-end',
+		borderBottomRightRadius: 7,
+		borderBottomLeftRadius: 7,
+		padding: 7,
 	},
 
 	seeDetailsText: {
-		color: '#fff',
+		color: '#ff0000',
 		marginRight: 5,
 		fontWeight: 'bold',
 	},
