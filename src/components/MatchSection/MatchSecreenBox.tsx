@@ -6,27 +6,31 @@ interface MatchScreenBoxProps {
 	matchDate: string;
 	duration: string;
 	won: boolean;
+	score: number;
 }
 
 export default function MatchScreenBox(props: MatchScreenBoxProps) {
 	return (
 		<TouchableOpacity activeOpacity={0.7} style={styles.container}>
-			<View style={styles.MatchType}>
+			<View style={[styles.MatchType, { backgroundColor: props.won ? 'blue' : '#ff0000' }]}>
 				<Text style={styles.matchTypeText}>{props.matchType}</Text>
 			</View>
 			<View style={styles.matchDate}>
-				<Text style={{ color: '#7f7e7e' }}>Date: </Text>
-				<Text>{props.matchDate}</Text>
+				<Text style={styles.detailName}>Date: </Text>
+				<Text style={{ fontSize: 16 }}>{props.matchDate}</Text>
 			</View>
-			<View style={{ paddingHorizontal: 20 }}>
+			<View>
 				<Text>
-					<Text style={{ color: '#7f7e7e' }}>Duration: </Text>
-					<Text>{props.duration}</Text>
+					<Text style={styles.detailName}>Duration: </Text>
+					<Text style={{ fontSize: 16 }}>{props.duration}</Text>
 				</Text>
 			</View>
 			<View style={styles.seeDetailsContainer}>
-				<Text style={styles.seeDetailsText}>See details</Text>
-				<AntDesign name="rightcircle" size={18} color="red" />
+				<Text style={[styles.seeDetailsText, { color: props.won ? 'blue' : '#ff0000' }]}>
+					See details
+				</Text>
+
+				<AntDesign name="rightcircle" size={20} color={props.won ? 'blue' : '#ff0000'} />
 			</View>
 		</TouchableOpacity>
 	);
@@ -34,46 +38,48 @@ export default function MatchScreenBox(props: MatchScreenBoxProps) {
 
 const styles = StyleSheet.create({
 	container: {
-		width: '80%',
-		borderRadius: 7,
-		backgroundColor: '#fff',
-		elevation: 20,
-		paddingTop: 10,
+		width: '86%',
+		borderRadius: 8,
+		backgroundColor: '#ececec',
+		elevation: 13,
+		padding: 25,
+		marginBottom: 25,
 	},
 
 	MatchType: {
 		padding: 7,
-		margin: 13,
 		width: 60,
 		borderRadius: 3,
 		alignItems: 'center',
-		backgroundColor: 'red',
 	},
 
 	matchTypeText: {
+		fontSize: 16,
 		color: '#fff',
-		fontWeight: 'bold',
+		fontWeight: '800',
 	},
 
 	matchDate: {
-		paddingHorizontal: 20,
 		justifyContent: 'flex-end',
 		flexDirection: 'row',
 	},
 
 	seeDetailsContainer: {
-		backgroundColor: '#f6f6f8',
 		flexDirection: 'row',
-		paddingHorizontal: 20,
 		justifyContent: 'flex-end',
 		borderBottomRightRadius: 7,
 		borderBottomLeftRadius: 7,
-		padding: 7,
 	},
 
 	seeDetailsText: {
-		color: '#ff0000',
-		marginRight: 5,
+		fontSize: 16,
 		fontWeight: 'bold',
+		marginRight: 12,
+	},
+
+	detailName: {
+		color: '#7f7e7e',
+		fontSize: 16,
+		fontWeight: '600',
 	},
 });
